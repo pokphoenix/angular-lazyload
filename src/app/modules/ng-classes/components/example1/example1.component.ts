@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import NgClassSingerModel from 'src/app/ng-classes/model/single.model';
+import NgClassSingerModel from 'src/app/models/single.model';
 
 @Component({
   selector: 'app-example1',

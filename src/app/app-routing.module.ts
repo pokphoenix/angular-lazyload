@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  {path:'customers', loadChildren: './customers/customers.module#CustomersModule'},
-  {path:'orders', loadChildren: './orders/orders.module#OrdersModule'},
-  {path:'ngclass', loadChildren: 'src/app/ng-classes/ng-classes.module#NgClassesModule'},
-  {path:'',redirectTo:'customers',pathMatch:'full'}
+  {path:'',redirectTo:'customers',pathMatch:'full'},
+  {path:'customers', loadChildren: 'src/app/modules/customers/customers.module#CustomersModule'},
+  {path:'orders', loadChildren: 'src/app/modules/orders/orders.module#OrdersModule'},
+  {path:'ngclass', loadChildren: 'src/app/modules/ng-classes/ng-classes.module#NgClassesModule'}
 ];
 
 @NgModule({
