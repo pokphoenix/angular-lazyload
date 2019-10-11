@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {path:'customers', loadChildren: './customers/customers.module#CustomersModule'},
   {path:'orders', loadChildren: './orders/orders.module#OrdersModule'},
+  {path:'ngclass', loadChildren: 'src/app/ng-classes/ng-classes.module#NgClassesModule'},
   {path:'',redirectTo:'customers',pathMatch:'full'}
 ];
 

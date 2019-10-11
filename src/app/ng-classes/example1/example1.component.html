@@ -1,0 +1,13 @@
+<div class="container">
+    <h4>NgClass</h4>
+    <small  class="text-muted">example1  use ngClass for multi color  </small>
+    <div *ngFor="let celeb of singers">
+        <p [ngClass]="{
+            'text-success':celeb.country === 'USA',
+            'text-secondary':celeb.country === 'Canada',
+            'text-danger':celeb.country === 'Puorto Rico',
+            'text-info':celeb.country === 'India'
+        }">{{ celeb.artist }} ({{ celeb.country }})
+        </p>
+    </div>
+</div>
