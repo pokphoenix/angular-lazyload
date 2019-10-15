@@ -7,12 +7,16 @@ import { FormsModule } from '@angular/forms';
 import { FormTemplateDrivenComponent } from './components/form-template-driven/form-template-driven.component';
 import { FormHeaderComponent } from './components/form-header/form-header.component';
 
+import { UtilsModule } from '../utils/utils.module';
+
+
 @NgModule({
   declarations: [FormNormalComponent, FormTemplateDrivenComponent, FormHeaderComponent],
   imports: [
     CommonModule,
     FormsRoutingModule,
-    FormsModule
+    FormsModule,
+    UtilsModule
   ]
 })
 export class ModuleForms { }

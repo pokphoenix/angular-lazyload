@@ -9,18 +9,4 @@
         <a class="dropdown-item" href="#">Separated link</a>
     </div>
 </div>-->
-Title : <span id="headerTitle"></span><BR>
-tutorial : 
-<select id="form_url"  #formUrl (change)="onChangeGotoNavigate($event.target.value)">
-    <option *ngFor="let formUrlList of formUrlLists"    
-    [value]="formUrlList.url"
-    [selected]="formUrlList.url===router.url"
-    >{{ formUrlList.text }}
-    </option>
-</select>
-
-<script>
-
-
-
-</script>
+<app-dropdown-url [formUrlLists]="urlLists"></app-dropdown-url>

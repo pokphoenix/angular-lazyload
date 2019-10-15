@@ -1,0 +1,9 @@
+Title : <span id="headerTitle"></span><BR>
+tutorial : 
+<select id="form_url"  #formUrl (change)="onChangeGotoNavigate($event.target.value)">
+    <option *ngFor="let formUrlList of formUrlLists"    
+    [value]="formUrlList.url"
+    [selected]="formUrlList.url===router.url"
+    >{{ formUrlList.text }}
+    </option>
+</select>

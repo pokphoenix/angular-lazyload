@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-declare var $: any;
+
 
 @Component({
   selector: 'app-form-header',
@@ -10,7 +10,7 @@ declare var $: any;
 })
 export class FormHeaderComponent implements OnInit {
 
-  formUrlLists:any = [
+  urlLists:any = [
     {
       'url': '/form/normal',
       'text': 'Form Normal'
@@ -26,14 +26,10 @@ export class FormHeaderComponent implements OnInit {
 
   ngOnInit() {
     hello(this.router.url)
-    $(function(){
-      $("#headerTitle").text($("#form_url option:selected").text());
-    })
+    
   }
 
-  onChangeGotoNavigate(val){
-    this.router.navigate([val]);
-  }
+  
    
 }
 
