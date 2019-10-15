@@ -1,0 +1,26 @@
+<!--<div class="btn-group dropright">
+    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Action
+    </button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" routerLink="../normal" >Form normal</a>
+        <a class="dropdown-item" routerLink="../template-driven">Form template driven</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div>-->
+Title : <span id="headerTitle"></span><BR>
+tutorial : 
+<select id="form_url"  #formUrl (change)="onChangeGotoNavigate($event.target.value)">
+    <option *ngFor="let formUrlList of formUrlLists"    
+    [value]="formUrlList.url"
+    [selected]="formUrlList.url===router.url"
+    >{{ formUrlList.text }}
+    </option>
+</select>
+
+<script>
+
+
+
+</script>

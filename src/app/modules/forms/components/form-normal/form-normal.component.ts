@@ -10,13 +10,16 @@ export class FormNormalComponent implements OnInit {
   //mForm:any={};
   mForm: UserModel = new UserModel();
 
+  debug:any ="";
+
   constructor() { }
 
   ngOnInit() {
   }
 
   onSubmit(formData){
-     window.alert(JSON.stringify(formData));
+    //  window.alert(JSON.stringify(formData));
+     this.debug = JSON.stringify(formData)
   }
 
 }
