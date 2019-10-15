@@ -9,7 +9,7 @@
 }
 </style>
 <form #authForm = "ngForm" (ngSubmit)="onSubmit(authForm.value)" >
-    <legend>Angular Form (Template Driven) using ngForm</legend>
+    <legend [ngStyle]="titleStyle">Angular Form (Template Driven) using ngForm</legend>
     <div class="form-group">
         <label for="firstName">First Name(Btw 5-10 letters)</label>
         <input type="text" 

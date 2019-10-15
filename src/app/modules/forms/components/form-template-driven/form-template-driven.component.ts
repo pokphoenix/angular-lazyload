@@ -12,6 +12,10 @@ export class FormTemplateDrivenComponent implements OnInit {
 
   debug:any ="";
 
+  titleStyle = {
+    color:"blue",
+    fontStyle:"italic"
+  }
 
   constructor() { }
 
