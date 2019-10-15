@@ -25,6 +25,7 @@ export class FormHeaderComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit() {
+    hello(this.router.url)
     $(function(){
       $("#headerTitle").text($("#form_url option:selected").text());
     })
@@ -34,4 +35,8 @@ export class FormHeaderComponent implements OnInit {
     this.router.navigate([val]);
   }
    
+}
+
+function hello(url) {
+  console.log('Hello!!!'+url);
 }
