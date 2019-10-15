@@ -1,5 +1,6 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
+        <!-- | slice:1  ==   except first loop   -->
         <li *ngFor="let breadcrumb of breadcrumbs | slice:1 ; index as i; first as isFirst ; last as isLast ; let brUrl =''; "
          class="breadcrumb-item"
          [ngClass]="{'active': isLast}"
