@@ -75,4 +75,13 @@
 
 <p>{{authForm.value | json }}</p>
 
-<p *ngIf="debug !=''" >{{debug}}</p>
+<p *ngIf="debug !=''" >{{debug}}</p>      <!-- ngIf  show if true   -->
+
+<hr>
+<p *ngIf="authForm.valid;then thenBlock; else elseBlock" ></p>      <!-- ngIf  show if true   -->
+<ng-template #thenBlock>
+    <span >Form validate : valid</span>
+</ng-template>
+<ng-template #elseBlock>
+    <span >Form validate : invalid </span>
+</ng-template>
