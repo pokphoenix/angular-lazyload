@@ -10,6 +10,8 @@
 </style>
 <form #authForm = "ngForm" (ngSubmit)="onSubmit(authForm.value)" >
     <legend [ngStyle]="titleStyle">Angular Form (Template Driven) using ngForm</legend>
+    <button (click)="onClickShowEvent($event)" >show event</button>
+    <button (click)="titleStyle.color='red'" >change variable value to red </button>
     <div class="form-group">
         <label for="firstName">First Name(Btw 5-10 letters)</label>
         <input type="text" 

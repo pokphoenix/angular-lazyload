@@ -28,5 +28,10 @@ export class FormTemplateDrivenComponent implements OnInit {
     //  window.alert(JSON.stringify(formData));
      this.debug = JSON.stringify(formData)
   }
+
+  onClickShowEvent(event){
+    console.log(event);
+  }
+
 }
 
