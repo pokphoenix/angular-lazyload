@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgForEx1Component implements OnInit {
 
+  colors = ["red","blue","green","yellow"];
+
   constructor() { }
 
   ngOnInit() {
