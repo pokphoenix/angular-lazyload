@@ -15,6 +15,10 @@ export class HeaderComponent implements OnInit {
     {
       'url': '/basic/ng-switch',
       'text': 'Ng Switch'
+    },
+    {
+      'url': '/basic/ng-for/ex1',
+      'text': 'Ng For Ex.1'
     }
   ];
 

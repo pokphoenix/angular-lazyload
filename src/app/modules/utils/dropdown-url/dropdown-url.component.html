@@ -1,6 +1,25 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li *ngFor="let breadcrumb of breadcrumbs | slice:1 ; index as i; first as isFirst ; last as isLast ; let brUrl =''; "
+         class="breadcrumb-item"
+         [ngClass]="{'active': isLast}"
+         >
+            <p *ngIf="!isLast;then lastThen; else lastElse" ></p>
+            <ng-template #lastThen>
+                <a href="{{breadcrumbs[i]+'/'+brUrl}}"  >{{breadcrumb}}</a>
+            </ng-template>
+            <ng-template #lastElse>
+                {{breadcrumb}}
+            </ng-template>
+        </li>
+ 
+    </ol>
+</nav>
+
 Title : <span id="headerTitle"></span><BR>
 tutorial : 
 <select id="form_url"  #formUrl (change)="onChangeGotoNavigate($event.target.value)">
+    <option value="" >please select</option>
     <option *ngFor="let formUrlList of formUrlLists"    
     [value]="formUrlList.url"
     [selected]="formUrlList.url===router.url"

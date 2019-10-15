@@ -6,10 +6,11 @@ import { NgSwitchComponent } from './ng-switch/components/ng-switch.component';
 import { BasicIndexComponent } from './index/index.component';
 import { HeaderComponent } from './header/header.component';
 import { UtilsModule } from '../utils/utils.module';
+import { NgForEx1Component } from './ng-for/components/ex1/ex1.component';
 
 
 @NgModule({
-  declarations: [NgSwitchComponent, BasicIndexComponent, HeaderComponent],
+  declarations: [NgSwitchComponent, BasicIndexComponent, HeaderComponent, NgForEx1Component],
   imports: [
     CommonModule,
     BasicRoutingModule,
