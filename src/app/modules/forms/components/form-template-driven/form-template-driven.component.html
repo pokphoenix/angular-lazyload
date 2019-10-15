@@ -12,14 +12,15 @@
     <legend>Angular Form (Template Driven) using ngForm</legend>
     <div class="form-group">
         <label for="firstName">First Name(Btw 5-10 letters)</label>
-        <input type="text" #firstName 
+        <input type="text" 
+            #firstName="ngModel" 
             pattern=".{5,10}"
             required
             class="form-control" id="firstName"  name="firstName" 
             placeholder="Input field" [(ngModel)]="mForm.firstName">
-        <small id="helpId" class="form-text text-muted">Help text</small>
+        <small id="helpId" class="form-text" [style.color]="firstName.invalid ? 'red':'green' " >Help text</small>
     </div>
-    <div>Debug : {{ firstName.className }}</div>  
+    <div>Debug : {{ firstName.className }} : {{ firstName.invalid  }}</div>  
     <div class="form-group">
         <label for="lastName">Last Name</label>
         <input type="text"
