@@ -1,0 +1,6 @@
+<app-basic-header></app-basic-header>
+<p>child-parent works!</p>
+
+
+data from child : {{ message }}
+<app-basic-data-sharing-index (childEvent)="message=$event" ></app-basic-data-sharing-index>

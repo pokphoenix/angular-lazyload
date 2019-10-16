@@ -1,0 +1,12 @@
+<p>index works!</p>
+
+<h2 *ngIf="router.url.endsWith('parent-child')">
+    data from parent : {{ name }}
+</h2>
+
+
+<div *ngIf="router.url.endsWith('child-parent')">
+    <input type="text" #childInput >
+    <button (click)="fireEvent(childInput.value)" >Send Event</button>
+</div>
+

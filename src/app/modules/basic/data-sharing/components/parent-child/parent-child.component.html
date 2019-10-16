@@ -1,0 +1,7 @@
+<app-basic-header></app-basic-header>
+<p>parent-child works!</p>
+<input  type="text" [value]="name" (input)="name = $event.target.value" >
+<!-- if want to use ngModel much  import { FormsModule } from '@angular/forms'; in modules file -->
+<!-- <input [ngModel]="message" (ngModelChange)="message = $event">     -->
+debug : {{ name }} 
+<app-basic-data-sharing-index [parentData]="name"></app-basic-data-sharing-index>

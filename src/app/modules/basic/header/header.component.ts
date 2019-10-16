@@ -19,6 +19,14 @@ export class HeaderComponent implements OnInit {
     {
       'url': '/basic/ng-for/ex1',
       'text': 'Ng For Ex.1'
+    },
+    {
+      'url': '/basic/data-sharing/parent-child',
+      'text': 'Data Sharing Parent to Child'
+    },
+    {
+      'url': '/basic/data-sharing/child-parent',
+      'text': 'Data Sharing Child to Parent'
     }
   ];
 

@@ -9,7 +9,6 @@
 <button class="btn btn-primary" (click)="color='blue'" >Blue</button>&nbsp;
 <button class="btn btn-success" (click)="color='green'" >Green</button>&nbsp;
 <button class="btn btn-light" (click)="color='orange'" >Default</button>&nbsp;
-
 <div [ngSwitch]="color">
     <p *ngSwitchCase="'red'">
         You pick red color
