@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceEmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-employee-index',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServiceEmployeeIndexComponent implements OnInit {
 
-  constructor() { }
+  employeees = [];
+  constructor(private _serviceEmployeeService : ServiceEmployeeService) { }
 
   ngOnInit() {
+    this.employeees =  this._serviceEmployeeService.getEmployeees();
   }
 
 }

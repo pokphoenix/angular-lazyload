@@ -20,7 +20,7 @@
 Title : <span id="headerTitle"></span><BR>
 tutorial : 
 <select id="form_url"  #formUrl (change)="onChangeGotoNavigate($event.target.value)">
-    <option value="" >please select</option>
+    <option value="/{{ router.url.split('/')[1] }}" >please select</option>
     <option *ngFor="let formUrlList of formUrlLists"    
     [value]="formUrlList.url"
     [selected]="formUrlList.url===router.url"

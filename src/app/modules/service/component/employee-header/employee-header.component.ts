@@ -9,8 +9,12 @@ export class EmployeeHeaderComponent implements OnInit {
 
   urlLists:any = [
     {
-      'url': '/service/employee',
-      'text': 'Service Employee Index'
+      'url': '/service/employee-normal',
+      'text': 'Service Employee Normal'
+    },
+    {
+      'url': '/service/employee-json',
+      'text': 'Service Employee Json'
     }
   ];
 
