@@ -18,6 +18,7 @@ uppercase : {{ txt.toUpperCase()}}<br>
 
     <table >
         <tbody>
+            <tr><td colspan="2"><h5 class="text-muted">String</h5></td></tr>
             <tr>
                 <td>Original String</td>
                 <td>{{ txt }}</td>
@@ -42,7 +43,7 @@ uppercase : {{ txt.toUpperCase()}}<br>
                 <td>json </td>
                 <td>{{ person | json }}</td>
             </tr>
-            <tr><td colspan="2"> Number </td> </tr>
+            <tr><td colspan="2"><h5 class="text-muted">Number</h5></td></tr>
             <tr>
                 <td>number:'1.2-3' </td>
                 <td>{{ 5.678 | number:'1.2-3' }}</td>
@@ -59,7 +60,7 @@ uppercase : {{ txt.toUpperCase()}}<br>
                 <td>5.678237 number:'3.4-5' </td>
                 <td>{{ 5.678237 | number:'3.4-5' }}</td>
             </tr>
-            <tr><td colspan="2"> Percent </td></tr>
+            <tr><td colspan="2"><h5 class="text-muted">Percent</h5></td></tr>
             <tr>
                 <td>0.25 percent </td>
                 <td>{{ 0.25 | percent }}</td>
@@ -76,7 +77,7 @@ uppercase : {{ txt.toUpperCase()}}<br>
                 <td>.097 percent </td>
                 <td>{{ .097 | percent }}</td>
             </tr>
-            <tr><td colspan="2"> Currency </td></tr>
+            <tr><td colspan="2"><h5 class="text-muted">Currency</h5>  </td></tr>
             <tr>
                 <td>.25 currency </td>
                 <td>{{ .25 | currency }}</td>
@@ -89,7 +90,7 @@ uppercase : {{ txt.toUpperCase()}}<br>
                 <td>25 currency:'JPY':'code' </td>
                 <td>{{ 25 | currency:'JPY':'code' }}</td>
             </tr>
-            <tr><td colspan="2"> Date </td></tr>
+            <tr><td  colspan="2"> <h5 class="text-muted">Date</h5>  </td></tr>
             <tr>
                 <td>date </td>
                 <td>{{ date }}</td>
