@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SidebarUtilsService } from 'src/app/services/utils/sidebar.service';
 
 @Component({
   selector: 'app-service-employee-header',
@@ -7,18 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeHeaderComponent implements OnInit {
 
-  urlLists:any = [
-    {
-      'url': '/service/employee-normal',
-      'text': 'Service Employee Normal'
-    },
-    {
-      'url': '/service/employee-json',
-      'text': 'Service Employee Json'
-    }
-  ];
+  urlLists:any = [];
 
-  constructor() { }
+  constructor(private _sidebarUtilsService : SidebarUtilsService) {
+    this.urlLists = _sidebarUtilsService.getSidebarUrlByModule("service");
+  }
 
   ngOnInit() {
   }

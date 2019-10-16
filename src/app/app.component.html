@@ -19,6 +19,14 @@ section.main{
     padding:0 20px 20px 20px;
     /* float: left;*/
 }
+
+.active {
+
+    background: DodgerBlue;
+    color:whitesmoke;
+
+}
+
 </style>
 
 <body style="display: flex;min-height: 100vh;flex-direction: column;">
@@ -31,14 +39,35 @@ section.main{
     <div class="container-fluid" style="flex: 1;" >
         <div class="row ">
             <section class="side">
-                <ul class="list-group">
-                    <li class="list-group-item" routerLink="">Home</li>
-                    <li class="list-group-item" routerLink="/basic">Basic</li>
-                    <li class="list-group-item" routerLink="/customers" >Customer</li>
-                    <li class="list-group-item" routerLink="/orders">Order</li>
-                    <li class="list-group-item" routerLink="/ngclass">NgClass</li>
-                    <li class="list-group-item" routerLink="/form">Form</li>
-                    <li class="list-group-item" routerLink="/service">service</li>
+                <ul class="" style="">
+                    <li class="" *ngFor=" let sidebar of sidebars; first as isFirst  ;  last as isLast " style=" display: block;position:relative;width:100%;border:1px solid #ccc; border-bottom:0px; "
+                        [style.border-bottom]="isLast ? '1px solid #ccc' : 'none' "
+                       
+                    >
+                    
+                    
+                    
+                        <div *ngIf="sidebar.sub!=null" class="row-ul" >
+                            <div class="ul-parent" style="padding:.75rem 1.25rem;" 
+                            [ngClass]="{'active': this.router.url.split('/')[1].toUpperCase() == sidebar.text.toUpperCase() }"
+                            >
+                                {{sidebar.text | titlecase }}
+                                <i class="fas fa-chevron-down mt-1 float-right"></i>
+                            </div>
+                            <ul class="ul-child" style=" display:none;position: relative; width: 100%; padding: 0;list-style-type: none;">
+                                <li class="" *ngFor=" let sub of sidebar.sub " [routerLink]="sub.url" style="display: block;padding: .75rem 1.25rem;position:relative;width:100%;border-top:1px solid #ccc;" 
+                                [ngClass]="{'active': this.router.url.toUpperCase() == sub.url.toUpperCase() }"
+                                >
+                                    {{sub.text}}  
+                                </li>
+                            </ul>
+                        </div>
+                        <a *ngIf="sidebar.sub==null" [routerLink]="sidebar.url" style="display: block;padding: .75rem 1.25rem;position:relative;width:100%; text-decoration: none;color:black" 
+                        [ngClass]="{'active': this.router.url.split('/')[1].toUpperCase() == sidebar.text.toUpperCase() }"
+                        >
+                            {{sidebar.text}}
+                        </a>
+                    </li>
                 </ul>
             </section>
             <section class="main">

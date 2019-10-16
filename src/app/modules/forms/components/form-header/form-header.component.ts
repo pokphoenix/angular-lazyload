@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SidebarUtilsService } from 'src/app/services/utils/sidebar.service';
 
 
 
@@ -10,19 +11,13 @@ import { Router } from '@angular/router';
 })
 export class FormHeaderComponent implements OnInit {
 
-  urlLists:any = [
-    {
-      'url': '/form/normal',
-      'text': 'Form Normal'
-    },
-    {
-      'url': '/form/template-driven',
-      'text': 'Form template driven'
-    }
-  ];
+  urlLists:any = [];
 
 
-  constructor(public router: Router) { }
+  
+  constructor(public router: Router,private _sidebarUtilsService : SidebarUtilsService) {
+    this.urlLists = _sidebarUtilsService.getSidebarUrlByModule("form");
+  }
 
   ngOnInit() {
     hello(this.router.url)
