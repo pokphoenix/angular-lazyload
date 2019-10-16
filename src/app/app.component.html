@@ -15,27 +15,33 @@ section.main{
 }
 </style>
 
-<div class="container-fluid" >
-    <h1>  
-        <i class="fa fa-sync fa-spin text-primary"></i>
-        {{title}}
-    </h1>
-    <div class="row">
-        <section class="col-md-3">
-            <ul class="list-group">
-                <li class="list-group-item" routerLink="">Home</li>
-                <li class="list-group-item" routerLink="/basic">Basic</li>
-                <li class="list-group-item" routerLink="/customers" >Customer</li>
-                <li class="list-group-item" routerLink="/orders">Order</li>
-                <li class="list-group-item" routerLink="/ngclass">NgClass</li>
-                <li class="list-group-item" routerLink="/form">Form</li>
-            </ul>
-        </section>
-        <section class="col">
-                <router-outlet></router-outlet>
-        </section>
-      
-    </div>    
-</div>
+<body style="display: flex;min-height: 100vh;flex-direction: column;">
 
-
+    <div class="container-fluid" style="flex: 1;" >
+        <h1>  
+            <i class="fa fa-sync fa-spin text-primary"></i>
+            {{title}}
+        </h1>
+        <div class="row">
+            <section class="col-md-3">
+                <ul class="list-group">
+                    <li class="list-group-item" routerLink="">Home</li>
+                    <li class="list-group-item" routerLink="/basic">Basic</li>
+                    <li class="list-group-item" routerLink="/customers" >Customer</li>
+                    <li class="list-group-item" routerLink="/orders">Order</li>
+                    <li class="list-group-item" routerLink="/ngclass">NgClass</li>
+                    <li class="list-group-item" routerLink="/form">Form</li>
+                </ul>
+            </section>
+            <section class="col">
+                    <router-outlet></router-outlet>
+            </section>
+            
+        </div>   
+        
+    </div>
+    
+    <div class="d-flex  justify-content-center align-items-center text-light" style="height: 100px; background-color: DodgerBlue; ">
+            <footer >pokphoenix@gmail.com</footer>
+    </div>
+</body>
