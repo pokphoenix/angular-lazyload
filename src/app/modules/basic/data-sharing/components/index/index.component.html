@@ -6,7 +6,16 @@
 
 
 <div *ngIf="router.url.endsWith('child-parent')">
-    <input type="text" #childInput >
-    <button (click)="fireEvent(childInput.value)" >Send Event</button>
+    <div >
+        <h4>Default Method</h4>
+        <input type="text" #childInput  >
+        <button (click)="fireEvent(childInput.value)" >Send Event</button>
+    </div>
+    <div>
+        <h4>Dynamic Method</h4>
+        <input type="text" (input)="this.childEvent.emit($event.target.value);" >
+    </div>  
+
+
 </div>
 
