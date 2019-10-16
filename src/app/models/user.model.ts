@@ -3,4 +3,12 @@ export default class UserModel {
     lastName :String;
     email :String;
     password:String;
+
+    
+    defaultValue(firstName,lastName,email) {
+        this.firstName = firstName;
+        this.lastName=lastName;
+        this.email=email;
+    }
+
 }

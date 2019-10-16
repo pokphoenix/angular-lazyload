@@ -1,5 +1,111 @@
 <app-basic-header></app-basic-header>
+<style>
+
+section{
+    border:1px solid salmon;
+    padding: 20px;
+}
+
+</style>
 <p>index works!</p>
 concate string {{ "poktest : "+txt }}<br>
 length : {{ txt.length }}<br>
 uppercase : {{ txt.toUpperCase()}}<br>
+
+
+<section >
+    <h3>Pipes</h3>
+
+    <table >
+        <tbody>
+            <tr>
+                <td>Original String</td>
+                <td>{{ txt }}</td>
+            </tr>
+            <tr>
+                <td>lower case</td>
+                <td>{{ txt | lowercase }}</td>
+            </tr>
+            <tr>
+                <td>upper case</td>
+                <td>{{ txt | uppercase }}</td>
+            </tr>
+            <tr>
+                <td>title case</td>
+                <td>{{ txt | titlecase }}</td>
+            </tr>
+            <tr>
+                <td>slice 3</td>
+                <td>{{ txt | slice:3 }}</td>
+            </tr>
+            <tr>
+                <td>json </td>
+                <td>{{ person | json }}</td>
+            </tr>
+            <tr><td colspan="2"> Number </td> </tr>
+            <tr>
+                <td>number:'1.2-3' </td>
+                <td>{{ 5.678 | number:'1.2-3' }}</td>
+            </tr>
+            <tr>
+                <td>number:'3.2-3' </td>
+                <td>{{ 5.678 | number:'3.2-3' }}</td>
+            </tr>
+            <tr>
+                <td>5.678 number:'3.4-5' </td>
+                <td>{{ 5.678 | number:'3.4-5' }}</td>
+            </tr>
+            <tr>
+                <td>5.678237 number:'3.4-5' </td>
+                <td>{{ 5.678237 | number:'3.4-5' }}</td>
+            </tr>
+            <tr><td colspan="2"> Percent </td></tr>
+            <tr>
+                <td>0.25 percent </td>
+                <td>{{ 0.25 | percent }}</td>
+            </tr>
+            <tr>
+                <td>1 percent </td>
+                <td>{{ 1 | percent }}</td>
+            </tr>
+            <tr>
+                <td>.091 percent </td>
+                <td>{{ .091 | percent }}</td>
+            </tr>
+            <tr>
+                <td>.097 percent </td>
+                <td>{{ .097 | percent }}</td>
+            </tr>
+            <tr><td colspan="2"> Currency </td></tr>
+            <tr>
+                <td>.25 currency </td>
+                <td>{{ .25 | currency }}</td>
+            </tr>
+            <tr>
+                <td>25 currency:'JPY' </td>
+                <td>{{ 25 | currency:'JPY' }}</td>     <!-- see currency at https://en.wikipedia.org/wiki/ISO_4217  -->
+            </tr>
+            <tr>
+                <td>25 currency:'JPY':'code' </td>
+                <td>{{ 25 | currency:'JPY':'code' }}</td>
+            </tr>
+            <tr><td colspan="2"> Date </td></tr>
+            <tr>
+                <td>date </td>
+                <td>{{ date }}</td>
+            </tr>
+            <tr>
+                <td>date:'short'</td>
+                <td>{{ date | date:'short' }}</td>
+            </tr>
+            <tr>
+                <td>date:'shortDate'</td>
+                <td>{{ date | date:'shortDate' }}</td>
+            </tr>
+            <tr>
+                <td>date:'shortTime'</td>
+                <td>{{ date | date:'shortTime' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
