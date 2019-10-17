@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { IEmployee } from '../interface/employee';
-import { Observable } from 'rxjs';
+import { Observable,throwError  } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceEmployeeService {
   
-  private _url: string = "/assets/data/employees.json";
+  private _url: string = "/assets/data/employees2.json";
   public employeees: IEmployee[];
   
   constructor(private http : HttpClient) { }
@@ -22,6 +23,14 @@ export class ServiceEmployeeService {
     ];
   }
   getEmployeeesUrl() :Observable<IEmployee[]>{
-    return this.http.get<IEmployee[]>(this._url);
+    return this.http.get<IEmployee[]>(this._url).pipe(
+      catchError(this.errorHandler)
+    );
+    //
   }
+
+  errorHandler(error:HttpErrorResponse){
+    return throwError(error.message || "Server Error");
+  }
+
 }

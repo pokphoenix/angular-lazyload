@@ -7,12 +7,15 @@ import { ServiceEmployeeService } from '../../services/employee.service';
   styleUrls: ['./employee-json-url.component.css']
 })
 export class ServiceEmployeeJsonUrlComponent implements OnInit {
-
+  errorMsg;
   employeees = [];
   constructor(private _serviceEmployeeService : ServiceEmployeeService) { }
 
   ngOnInit() {
-    this._serviceEmployeeService.getEmployeeesUrl().subscribe(data=> this.employeees=data);
+    this._serviceEmployeeService.getEmployeeesUrl()
+    .subscribe(data=> this.employeees=data ,
+        error=>this.errorMsg = error 
+      );
   }
 
 }

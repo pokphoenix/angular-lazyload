@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmployeeJsonUrlComponent } from './employee-json-url.component';
+import { ServiceEmployeeJsonUrlComponent } from './employee-json-url.component';
 
-describe('EmployeeJsonUrlComponent', () => {
-  let component: EmployeeJsonUrlComponent;
-  let fixture: ComponentFixture<EmployeeJsonUrlComponent>;
+describe('ServiceEmployeeJsonUrlComponent', () => {
+  let component: ServiceEmployeeJsonUrlComponent;
+  let fixture: ComponentFixture<ServiceEmployeeJsonUrlComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EmployeeJsonUrlComponent ]
+      declarations: [ ServiceEmployeeJsonUrlComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmployeeJsonUrlComponent);
+    fixture = TestBed.createComponent(ServiceEmployeeJsonUrlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
