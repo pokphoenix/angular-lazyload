@@ -17,12 +17,17 @@ export class BasicNgForExComponent implements OnInit {
   ];
 
   constructor(private router:Router,private route:ActivatedRoute) {
-    //this.exId = parseInt(this.route.snapshot.paramMap.get("id"));
+    //this.exId = parseInt(this.route.snapshot.paramMap.get("id")); 
+    // this method will not work when
+    // main layout and dynamic layout in the same page 
+    // much change page it would work
   }
 
   ngOnInit() {
+    // this for change value every time 
     this.route.paramMap.subscribe(params => {
-      this.exId = parseInt(params.get("id")) ;
+      if (params.get("id")!=null)
+        this.exId = parseInt(params.get("id")) ;
     });
   }
 
