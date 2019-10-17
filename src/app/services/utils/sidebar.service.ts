@@ -37,6 +37,10 @@ export class SidebarUtilsService {
           'text': 'NgFor Ex.4 Use method from super class'
         },
         {
+          'url': '/basic/ng-for/ex/5',
+          'text': 'NgFor Ex.5 create ngFor by declare Array'
+        },
+        {
           'url': '/basic/data-sharing/parent-child',
           'text': 'Data Sharing Parent to Child'
         },

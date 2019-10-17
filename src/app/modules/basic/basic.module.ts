@@ -14,6 +14,7 @@ import { BasicNgForEx1Component } from './ng-for/components/ex1/ex1.component';
 import { BasicNgForEx2Component } from './ng-for/components/ex2/ex2.component';
 import { BasicNgForEx3Component } from './ng-for/components/ex3/ex3.component';
 import { BasicNgForEx4Component } from './ng-for/components/ex4/ex4.component';
+import { BasicNgForEx5Component } from './ng-for/components/ex5/ex5.component';
 
 @NgModule({
   declarations: [NgSwitchComponent, BasicIndexComponent, HeaderComponent, BasicDataSharingParentChildComponent, BasicDataSharingChildParentComponent, BasicDataSharingIndexComponent
@@ -22,6 +23,7 @@ import { BasicNgForEx4Component } from './ng-for/components/ex4/ex4.component';
     , BasicNgForEx2Component
     , BasicNgForEx3Component
     , BasicNgForEx4Component
+    , BasicNgForEx5Component
   ],
   imports: [
     CommonModule,
