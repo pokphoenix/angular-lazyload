@@ -24,6 +24,8 @@ Your select example id = {{exId}}
        <!-- you don't pick ngFor example --> 
     </p>     
 </div>
-
-
+<hr>
+<button class="btn btn-secondary" (click)="goPrevious()" [disabled]="exId <= 0" >Previous</button>
+&nbsp;
+<button class="btn btn-primary" (click)="goNext()" [disabled]="exId >= maxExId" >Next {{ maxExId }}</button>
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { SidebarUtilsService } from 'src/app/services/utils/sidebar.service';
 
 @Component({
@@ -10,6 +10,7 @@ import { SidebarUtilsService } from 'src/app/services/utils/sidebar.service';
 export class BasicNgForExComponent implements OnInit {
 
   exId:number = 0; 
+  maxExId:number = 1;
 
   ngForExs:any = [];
 
@@ -19,10 +20,8 @@ export class BasicNgForExComponent implements OnInit {
     ,private _sidebarUtilsService : SidebarUtilsService
     ) {
     //this.exId = parseInt(this.route.snapshot.paramMap.get("id")); 
-    // this method will not work when
-    // main layout and dynamic layout in the same page 
-    // much change page it would work
-
+    // snapshot method will not work when navigate in the same component
+    
     let datas = _sidebarUtilsService.getSidebarUrlByModule("basic");
     let i = 1;
     for (const data of datas) {
@@ -34,12 +33,13 @@ export class BasicNgForExComponent implements OnInit {
         i++;
       }
     }
+    this.maxExId = i-1;
 
   }
 
   ngOnInit() {
-    // this for change value every time 
-    this.route.paramMap.subscribe(params => {
+    // this for change value every time if use same component
+    this.route.paramMap.subscribe((params:ParamMap)=> {
       if (params.get("id")!=null)
         this.exId = parseInt(params.get("id")) ;
     });
@@ -47,6 +47,12 @@ export class BasicNgForExComponent implements OnInit {
 
   onSelect(data){
     this.router.navigate(['/basic/ng-for/ex',data.id]);
+  }
+  goPrevious(){
+    this.router.navigate(['/basic/ng-for/ex',this.exId-1<=0 ? 0 : this.exId-1 ]);
+  }
+  goNext(data){
+    this.router.navigate(['/basic/ng-for/ex',this.exId+1 >= this.maxExId ? this.maxExId : this.exId+1  ]);
   }
 
 }
