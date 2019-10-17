@@ -9,7 +9,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class ServiceEmployeeService {
   
-  private _url: string = "/assets/data/employees2.json";
+  private _url: string = "/assets/data/employees.json";
   public employeees: IEmployee[];
   
   constructor(private http : HttpClient) { }
@@ -26,7 +26,6 @@ export class ServiceEmployeeService {
     return this.http.get<IEmployee[]>(this._url).pipe(
       catchError(this.errorHandler)
     );
-    //
   }
 
   errorHandler(error:HttpErrorResponse){
