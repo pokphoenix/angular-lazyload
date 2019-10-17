@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PageNotfoundComponent } from './components/page-notfound/page-notfound.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path:'form', loadChildren: 'src/app/modules/forms/forms.module#ModuleForms'},
   {path:'basic', loadChildren: 'src/app/modules/basic/basic.module#BasicModule'},
   {path:'service', loadChildren: 'src/app/modules/service/service.module#ServiceModule'},
+  {path:"**",component:PageNotfoundComponent } // important this much lowest order  
 ];
 
 @NgModule({
