@@ -14,12 +14,13 @@ export class DropdownUrlComponent implements OnInit {
 
   breadcrumbs = [];
 
+  
+
   constructor(public router: Router) { }
 
   ngOnInit() {
 
     this.breadcrumbs = this.router.url.split('/');
-
     $(function(){
       $("#headerTitle").text($("#form_url option:selected").text());
     })
@@ -27,6 +28,14 @@ export class DropdownUrlComponent implements OnInit {
 
   onChangeGotoNavigate(val){
     this.router.navigate([val]);
+  }
+  getBreadcrumbsUrl(loop:number){
+    loop++;
+    let txt:string = "";  
+    for(let i=1;i<=loop;i++){
+        txt += "/"+this.breadcrumbs[i];
+    }
+    return txt;  
   }
 
 }

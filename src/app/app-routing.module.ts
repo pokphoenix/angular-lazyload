@@ -4,7 +4,9 @@ import { PageNotfoundComponent } from './components/page-notfound/page-notfound.
 
 
 const routes: Routes = [
-  {path:'',redirectTo:'basic',pathMatch:'full'},
+  //if setting  pathMatch:'prefix' 
+	//when type only "test" in address bar   it will  redirect to  /basic/test 
+  {path:'',redirectTo:'basic',pathMatch:'full'},  
   {path:'customers', loadChildren: 'src/app/modules/customers/customers.module#CustomersModule'},
   {path:'orders', loadChildren: 'src/app/modules/orders/orders.module#OrdersModule'},
   {path:'ngclass', loadChildren: 'src/app/modules/ng-classes/ng-classes.module#NgClassesModule'},

@@ -1,0 +1,27 @@
+<app-basic-header></app-basic-header>
+
+<hr>
+
+<ul class="list-group">
+
+    <li class="list-group-item" *ngFor="let ngForEx of ngForExs;" (click)="onSelect(ngForEx)" >
+        <span class="badge badge-secondary">{{ ngForEx.id }}</span>{{ ngForEx.name }}
+    </li>
+</ul>
+
+
+<hr>
+
+Your select example id = {{exId}}
+
+<div [ngSwitch]="exId">
+    <app-basic-ng-for-ex1 *ngSwitchCase="1"></app-basic-ng-for-ex1>
+    <app-basic-ng-for-ex2 *ngSwitchCase="2"></app-basic-ng-for-ex2>
+    <app-basic-ng-for-ex3 *ngSwitchCase="3"></app-basic-ng-for-ex3>
+    <p *ngSwitchDefault>
+       <!-- you don't pick ngFor example --> 
+    </p>     
+</div>
+
+
+

@@ -1,13 +1,18 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <!-- | slice:1  ==   except first loop   -->
-        <li *ngFor="let breadcrumb of breadcrumbs | slice:1 ; index as i; first as isFirst ; last as isLast ; let brUrl =''; "
-         class="breadcrumb-item"
-         [ngClass]="{'active': isLast}"
+        <li *ngFor="let breadcrumb of breadcrumbs | slice:1 ; index as i; first as isFirst ; last as isLast ;"
+            class="breadcrumb-item"
+            [ngClass]="{'active': isLast}"
          >
             <p *ngIf="!isLast;then lastThen; else lastElse" ></p>
             <ng-template #lastThen>
-                <a href="{{breadcrumbs[i]+'/'+brUrl}}"  >{{breadcrumb}}</a>
+                <!--<div *ngFor="let item of [].constructor(10); index as iis;">
+                    {{iis}}
+                </div>-->
+                <a [href]="getBreadcrumbsUrl(i)">
+                    {{breadcrumb}}
+                </a>
             </ng-template>
             <ng-template #lastElse>
                 {{breadcrumb}}

@@ -1,8 +1,8 @@
-<app-basic-header></app-basic-header>
-<p>ex1 works!</p>
+
+<p>ex1 basic ngFor from arrays !</p>
 <div *ngFor="let color of colors; index as i ; first as f; last as l;odd as o;even as e " >
-    <h2 [ngClass]="{
+    <h5 [ngClass]="{
         'text-success':o,
         'text-danger':e
-    }"> {{i}} {{color}}  :  first {{f}} , last {{l}}</h2> 
+    }"> {{i}} {{color}}  :  first {{f}} , last {{l}}</h5> 
 </div>

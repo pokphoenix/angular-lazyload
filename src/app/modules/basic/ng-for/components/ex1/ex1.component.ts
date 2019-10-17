@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-ex1',
+  selector: 'app-basic-ng-for-ex1',
   templateUrl: './ex1.component.html',
   styleUrls: ['./ex1.component.css']
 })
-export class NgForEx1Component implements OnInit {
+export class BasicNgForEx1Component implements OnInit {
 
   colors = ["red","blue","green","yellow"];
 

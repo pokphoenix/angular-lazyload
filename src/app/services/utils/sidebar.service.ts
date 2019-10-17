@@ -17,8 +17,20 @@ export class SidebarUtilsService {
           'text': 'Ng Switch'
         },
         {
-          'url': '/basic/ng-for/ex1',
+          'url': '/basic/ng-for/ex',
+          'text': 'Ng For Ex'
+        },
+        {
+          'url': '/basic/ng-for/ex/1',
           'text': 'Ng For Ex.1'
+        },
+        {
+          'url': '/basic/ng-for/ex/2',
+          'text': 'Ng For Ex.2'
+        },
+        {
+          'url': '/basic/ng-for/ex/3',
+          'text': 'Ng For Ex.3'
         },
         {
           'url': '/basic/data-sharing/parent-child',
