@@ -54,5 +54,12 @@ export class BasicNgForExComponent implements OnInit {
   goNext(data){
     this.router.navigate(['/basic/ng-for/ex',this.exId+1 >= this.maxExId ? this.maxExId : this.exId+1  ]);
   }
+  goMain(){
+    this.router.navigate(['/basic/ng-for/ex',{id:this.exId,test:"pok test"}]);
+  }
+
+  isSelected(list){
+    return list.id===this.exId;
+  }
 
 }

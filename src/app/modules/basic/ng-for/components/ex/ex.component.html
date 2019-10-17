@@ -4,7 +4,10 @@
 
 <ul class="list-group">
 
-    <li class="list-group-item" *ngFor="let ngForEx of ngForExs;" (click)="onSelect(ngForEx)" >
+    <li class="list-group-item" *ngFor="let ngForEx of ngForExs;" 
+        (click)="onSelect(ngForEx)" 
+        [class.active]="isSelected(ngForEx)"
+        >
         <span class="badge badge-secondary">{{ ngForEx.id }}</span>{{ ngForEx.name }}
     </li>
 </ul>
@@ -28,4 +31,7 @@ Your select example id = {{exId}}
 <button class="btn btn-secondary" (click)="goPrevious()" [disabled]="exId <= 0" >Previous</button>
 &nbsp;
 <button class="btn btn-primary" (click)="goNext()" [disabled]="exId >= maxExId" >Next {{ maxExId }}</button>
-
+<BR><BR>
+<div>
+    <button class="btn btn-info" (click)="goMain()" >Back</button>
+</div>
