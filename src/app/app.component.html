@@ -74,8 +74,8 @@ a.sidebar-item{
     <div class="container-fluid" style="flex: 1;" >
         <div class="row ">
             <section class="side">
-                <ul class="sidebar-main" style="">
-                    <li class="sidebar-item" *ngFor=" let sidebar of sidebars; first as isFirst  ;  last as isLast " style=" "
+                <ul class="sidebar-main" >
+                    <li class="sidebar-item" *ngFor=" let sidebar of sidebars; first as isFirst  ;  last as isLast "
                         [style.border-bottom]="isLast ? '1px solid #ccc' : 'none' "
                     >
                         <div *ngIf="sidebar.sub!=null" class="row-ul" >

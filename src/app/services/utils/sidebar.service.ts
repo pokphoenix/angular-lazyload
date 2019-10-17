@@ -18,19 +18,23 @@ export class SidebarUtilsService {
         },
         {
           'url': '/basic/ng-for/ex',
-          'text': 'Ng For Ex'
+          'text': 'NgFor'
         },
         {
           'url': '/basic/ng-for/ex/1',
-          'text': 'Ng For Ex.1'
+          'text': 'NgFor Ex.1 learning ngFor'
         },
         {
           'url': '/basic/ng-for/ex/2',
-          'text': 'Ng For Ex.2'
+          'text': 'NgFor Ex.2 create ngFor by constructor'
         },
         {
           'url': '/basic/ng-for/ex/3',
-          'text': 'Ng For Ex.3'
+          'text': 'NgFor Ex.3 create ngFor By function '
+        },
+        {
+          'url': '/basic/ng-for/ex/4',
+          'text': 'NgFor Ex.4 Use method from super class'
         },
         {
           'url': '/basic/data-sharing/parent-child',

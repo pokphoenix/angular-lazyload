@@ -12,7 +12,7 @@ export class BasicNgForEx3Component implements OnInit {
   ngOnInit() {
   }
 
-  makeArray(i: number) {
+  counter(i: number) {
     return new Array(i);
   }
 
