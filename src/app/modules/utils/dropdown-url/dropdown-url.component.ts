@@ -17,12 +17,11 @@ export class DropdownUrlComponent implements OnInit {
   breadcrumbs = [];
   currentUrl="";  
   
-
-  constructor(public router: Router ,private route:ActivatedRoute) {
+  constructor(public router: Router ,private route:ActivatedRoute,@Inject('BASE_URL') baseUrl: string) {
     // console.log("DropdownUrlComponent constructor");
+    console.log("baseUrl : "+baseUrl);
   }
 
-  
   ngOnInit() {
     // console.log("DropdownUrlComponent ngOnInit parentBaseUrl : "+this.parentBaseUrl);
     if(this.parentBaseUrl==""){
