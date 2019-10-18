@@ -82,6 +82,10 @@ export class SidebarUtilsService {
         {
           'url': '/route/relative-navigation',
           'text': 'route relative navigation'
+        },
+        {
+          'url': '/route/child-route',
+          'text': 'route child route'
         }
       ]
     },

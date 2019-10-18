@@ -6,6 +6,9 @@ import { OptionalRouteComponent } from './components/optional-route/optional-rou
 import { RouteParamMapComponent } from './components/route-param-map/route-param-map.component';
 import { RelativeNavigationComponent } from './components/relative-navigation/relative-navigation.component';
 import { RelativeNavigationDetailComponent } from './components/relative-navigation-detail/relative-navigation-detail.component';
+import { ChildRouteComponent } from './components/child-route/child-route.component';
+import { ChildRouteOverviewComponent } from './components/child-route-overview/child-route-overview.component';
+import { ChildRouteContactComponent } from './components/child-route-contact/child-route-contact.component';
 
 
 const routes: Routes = [
@@ -16,8 +19,15 @@ const routes: Routes = [
   {path:'optional-route',component:OptionalRouteComponent},
   {path:'optional-route/:id',component:OptionalRouteComponent},
   {path:'relative-navigation',component:RelativeNavigationComponent},
-  {path:'relative-navigation/:id',component:RelativeNavigationDetailComponent}
-
+  {path:'relative-navigation/:id',component:RelativeNavigationDetailComponent},
+  {
+    path:'child-route',component:ChildRouteComponent,
+    children:[
+      {path:'overview',component:ChildRouteOverviewComponent},
+      {path:'contact',component:ChildRouteContactComponent}
+    ]
+  },
+  
 ];
 
 @NgModule({
