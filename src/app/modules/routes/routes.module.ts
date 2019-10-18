@@ -9,10 +9,11 @@ import { RouteDetailComponent } from './components/route-detail/route-detail.com
 import { UtilsModule } from '../utils/utils.module';
 import { RouteParamMapComponent } from './components/route-param-map/route-param-map.component';
 import { RouteHeaderComponent } from './components/route-header/route-header.component';
+import { RelativeNavigationDetailComponent } from './components/relative-navigation-detail/relative-navigation-detail.component';
 
 
 @NgModule({
-  declarations: [RelativeNavigationComponent, OptionalRouteComponent, RouteComponent, RouteDetailComponent, RouteParamMapComponent, RouteHeaderComponent],
+  declarations: [RelativeNavigationComponent, OptionalRouteComponent, RouteComponent, RouteDetailComponent, RouteParamMapComponent, RouteHeaderComponent, RelativeNavigationDetailComponent],
   imports: [
     CommonModule,
     RoutesRoutingModule,

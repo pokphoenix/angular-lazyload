@@ -78,6 +78,10 @@ export class SidebarUtilsService {
         {
           'url': '/route/optional-route',
           'text': 'route optional route'
+        },
+        {
+          'url': '/route/relative-navigation',
+          'text': 'route relative navigation'
         }
       ]
     },

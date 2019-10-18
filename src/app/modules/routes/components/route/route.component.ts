@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarUtilsService } from 'src/app/services/utils/sidebar.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import UtilRoutes from 'src/app/services/utils/routes';
 
 @Component({
   selector: 'app-route',
@@ -19,7 +20,6 @@ export class RouteComponent implements OnInit {
 
     let i = 1;
     for (const data of this.urlLists) {
-      console.log("data : "+JSON.stringify(data));
       if(data.url.indexOf("/route/")!=-1 && data.url != "/route/index" ){
         this.learningLists.push({
             id: i , 
@@ -31,12 +31,7 @@ export class RouteComponent implements OnInit {
     }
     this.maxRouteId = i-1;
 
-    this.route.paramMap.subscribe((params:ParamMap)=> {
-      if (params.get("id")!=null){
-        this.routeId = parseInt(params.get("id")) 
-      }
-    });
-
+    this.routeId = UtilRoutes.getCurrentRouteId(this.route);
   }
 
    

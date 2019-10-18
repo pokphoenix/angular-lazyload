@@ -1,1 +1,27 @@
-<p>relative-navigation works!</p>
+<app-route-header></app-route-header>
+
+
+<hr>
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let list of learningLists;"
+        (click)="onSelect(list.id)"
+        [class.active]="isSelected(list)"
+        >
+        <span class="badge badge-secondary">{{ list.id }}</span>{{ list.name }}
+    </li>
+</ul>
+
+<hr>
+<h4>route relative navigation</h4>
+in this tutorial we will learning about<br>
+1.how to redirect to route with id <br>
+
+
+<span class="text-danger">
+    ***when you click li list it will redirect to route/relative-navigation/:id from list id
+</span>
+
+
+
+

@@ -24,7 +24,7 @@ export class DropdownUrlComponent implements OnInit {
 
   ngOnInit() {
     // console.log("DropdownUrlComponent ngOnInit parentBaseUrl : "+this.parentBaseUrl);
-    if(this.parentBaseUrl==""){
+    if(this.parentBaseUrl==""||this.parentBaseUrl==null){
       this.getCurrentUrl(this.router,this.route);
     }else{
       let url = UtilRoutes.getCurrentUrlWithOutParamId(this.router,this.route);
@@ -41,6 +41,8 @@ export class DropdownUrlComponent implements OnInit {
     let navigateUrl = router.url;
     this.currentUrl = navigateUrl;
     this.breadcrumbs = navigateUrl.split(';')[0].split("/");
+
+
     // console.log("getCurrentUrl "+this.currentUrl+" , "+this.breadcrumbs );
     // let max:number = navigateUrl.split("/").length;
     // let url = navigateUrl.split(";")[0].split("/");
@@ -53,7 +55,6 @@ export class DropdownUrlComponent implements OnInit {
           this.breadcrumbs = currentUrl.split(';')[0].split("/");
         }
     });
-    return currentUrl ;
   }
 
 
