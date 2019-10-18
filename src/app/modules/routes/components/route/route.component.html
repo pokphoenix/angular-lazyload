@@ -1,0 +1,15 @@
+<app-route-header></app-route-header>
+
+
+<hr>
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let list of learningLists;"
+        [routerLink]="list.url"
+        [class.active]="isSelected(list)"
+        >
+        <span class="badge badge-secondary">{{ list.id }}</span>{{ list.name }}
+    </li>
+</ul>
+
+

@@ -65,6 +65,22 @@ export class SidebarUtilsService {
         }
       ]
     },
+    {text:"route",url:"/route",
+      sub:[
+        {
+          'url': '/route/index',
+          'text': 'route'
+        },
+        {
+          'url': '/route/param-map',
+          'text': 'route paramMap'
+        },
+        {
+          'url': '/route/optional-route',
+          'text': 'route optional route'
+        }
+      ]
+    },
     {text:"service",url:"/service",
       sub:[
         {

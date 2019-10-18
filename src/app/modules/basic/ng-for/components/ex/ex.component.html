@@ -28,10 +28,9 @@ Your select example id = {{exId}}
     </p>     
 </div>
 <hr>
+<button class="btn btn-danger" (click)="goMain()" >Back</button>
+&nbsp;
 <button class="btn btn-secondary" (click)="goPrevious()" [disabled]="exId <= 0" >Previous</button>
 &nbsp;
-<button class="btn btn-primary" (click)="goNext()" [disabled]="exId >= maxExId" >Next {{ maxExId }}</button>
-<BR><BR>
-<div>
-    <button class="btn btn-info" (click)="goMain()" >Back</button>
-</div>
+<button class="btn btn-primary" (click)="goNext()" [disabled]="exId >= maxExId" >Next</button>
+&nbsp;

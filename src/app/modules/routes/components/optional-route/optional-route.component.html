@@ -1,0 +1,19 @@
+<app-route-header [currentUrl]="currentUrl"></app-route-header>
+<hr>
+<p>route detail component</p>
+<app-route-detail [currentUrl]="currentUrl" ></app-route-detail>
+<hr>
+<h4>optional route</h4>
+
+in this tutorial we will learning about<br>
+1.how to setting optional tag to url <br>
+2.how to get optional tag from url<br>
+
+when you click next or previous button  it will setting param id to url<BR>
+when you click back button it will back to main page and show optional tag in url <BR>
+
+<div>
+    <button class="btn btn-info" (click)="goMain()" >Back</button>
+</div>
+tag Test : {{ tagTest }} <BR>
+tag BeforeRouteId : {{beforeRouteId}}<BR>

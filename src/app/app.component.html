@@ -80,10 +80,10 @@ a.sidebar-item{
                     >
                         <div *ngIf="sidebar.sub!=null" class="row-ul" >
                             <div class="ul-parent" 
-                                [ngClass]="{'active': this.router.url.split('/')[1].toUpperCase() == sidebar.text.toUpperCase() }"
+                                [class.active]="this.router.url.split('/')[1].toUpperCase() == sidebar.text.toUpperCase()"
                             >
                                 {{sidebar.text | titlecase }}
-                                <i class="fas fa-chevron-down mt-1 float-right"></i>
+                                <i class="fas fa-chevron-left mt-1 float-right"></i>
                             </div>
                             <ul class="ul-child" style=" display:none;">
                                 <li class="sidebar-item" *ngFor=" let sub of sidebar.sub " 

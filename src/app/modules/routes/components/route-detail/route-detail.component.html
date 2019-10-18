@@ -1,0 +1,8 @@
+<p>Your select example id = {{routeId}}</p>
+
+
+<button class="btn btn-secondary" (click)="goPrevious(currentUrl)" [disabled]="routeId <= 0" >Previous</button>
+&nbsp;
+<button class="btn btn-primary" (click)="goNext(currentUrl)" [disabled]="routeId >= maxRouteId" >Next {{ maxRouteId }}</button>
+<BR><BR>
+

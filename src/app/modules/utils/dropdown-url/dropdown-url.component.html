@@ -23,12 +23,12 @@
 </nav>
 
 Title : <span id="headerTitle"></span><BR>
-tutorial : 
+tutorial :
 <select id="form_url"  #formUrl (change)="onChangeGotoNavigate($event.target.value)">
     <option value="/{{ router.url.split('/')[1] }}" >please select</option>
     <option *ngFor="let formUrlList of formUrlLists"    
     [value]="formUrlList.url"
-    [selected]="formUrlList.url===router.url"
+    [selected]="formUrlList.url===currentUrl"
     >{{ formUrlList.text }}
     </option>
 </select>
