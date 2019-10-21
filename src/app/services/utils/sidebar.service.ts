@@ -62,6 +62,10 @@ export class SidebarUtilsService {
         {
           'url': '/form/template-driven',
           'text': 'Form template driven'
+        },
+        {
+          'url': '/form/tdf',
+          'text': 'Form TDF'
         }
       ]
     },

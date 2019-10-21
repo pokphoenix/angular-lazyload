@@ -8,10 +8,11 @@ import { FormTemplateDrivenComponent } from './components/form-template-driven/f
 import { FormHeaderComponent } from './components/form-header/form-header.component';
 
 import { UtilsModule } from '../utils/utils.module';
+import { FormTdfComponent } from './components/form-tdf/form-tdf.component';
 
 
 @NgModule({
-  declarations: [FormNormalComponent, FormTemplateDrivenComponent, FormHeaderComponent],
+  declarations: [FormNormalComponent, FormTemplateDrivenComponent, FormHeaderComponent, FormTdfComponent],
   imports: [
     CommonModule,
     FormsRoutingModule,

@@ -1,0 +1,249 @@
+<form action="" #userForm="ngForm">
+
+    {{ userForm.value | json }}
+    <hr>
+    {{ userModel | json }}
+    <hr>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" #name="ngModel" required name="name" id="name"   placeholder="" [(ngModel)]="userModel.name"
+        class="form-control"
+        [class.is-invalid]="name.invalid && name.touched"
+        >
+        <small  class="form-text text-danger"
+        [class.d-none]="name.valid||name.untouched"
+        >
+          <BR>Name is required 
+        </small>
+        <small class="form-text text-muted">
+            <p> untouch : {{name.untouched}} </p>
+            <p> touch : {{name.touched}} </p>
+            <p> pristine : {{name.pristine}} </p>
+            <p> dirty : {{name.dirty}} </p>
+            <p> valid : {{name.valid}} </p>
+            <p> invalid : {{name.invalid}} </p>
+        </small>
+        
+    </div>
+
+    
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" #emailDetect required name="email" id="email" placeholder="" [(ngModel)]="userModel.email"
+        class="form-control "
+        >
+      <small id="helpId" class="form-text text-muted">
+          className : {{ name.className }}
+       
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="tel" name="phone" id="phone" 
+        #phone="ngModel" 
+        [(ngModel)]="userModel.phone"
+        pattern="^\d{10}$"  
+        required
+      
+        class="form-control"
+        [class.in-valid]="phone.is-invalid && phone.touched"
+        >
+
+        <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+            <small class="text-danger" 
+              *ngIf="phone.errors.required" >
+                Phone number is require
+            </small>
+            <small class="text-danger" 
+              *ngIf="phone.errors.pattern" >
+                Phone number must be 10 digit
+            </small>
+        </div>
+
+      
+    </div>
+    <div class="form-group">
+      <label for=""></label>
+      <select class="form-control custom-select"  name="topic" id="" [(ngModel)]="userModel.topic">
+        <option>I am interested in</option>
+        <option *ngFor="let topic of topics">{{topic}}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Time preference</label>
+
+        <div class="form-check">
+            <label class="form-check-label">    
+                <input type="radio" class="form-check-input" [(ngModel)]="userModel.timePreference" name="timePreference" id="morning" value="morning" checked>
+                Morning (9AM - 12PM)
+            </label>
+        </div>
+    
+        <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" class="form-check-input" [(ngModel)]="userModel.timePreference" name="timePreference" id="evening" value="evening">
+                Evening (5PM - 8AM)
+            </label>
+        </div>
+    </div>
+
+    <div class="form-check mb-3">
+      <label class="form-check-label">
+        <input type="checkbox" class="form-check-input" name="subscribe" [(ngModel)]="userModel.subscribe" id="" value="checkedValue">
+        Send me prometional offers
+      </label>
+    </div>
+  
+    <div ngModelGroup="address">
+      <div class="form-group">
+        <label for="">Street</label>
+        <input type="text"
+          class="form-control" name="street" id="" placeholder="" ngModel>
+        <small id="helpId" class="form-text text-muted">Help text</small>
+      </div>
+      <div class="form-group">
+          <label for="">City</label>
+          <input type="text"
+            class="form-control" name="city" id="" placeholder="" ngModel>
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </div>
+        <div class="form-group">
+            <label for="">State</label>
+            <input type="text"
+              class="form-control" name="state" id="" placeholder="" ngModel>
+            <small id="helpId" class="form-text text-muted">Help text</small>
+          </div>
+          <div class="form-group">
+            <label for="">Postal code</label>
+            <input type="text"
+              class="form-control" name="postalcode" id="" placeholder="" ngModel>
+            <small id="helpId" class="form-text text-muted">Help text</small>
+          </div>
+    </div> 
+    
+    <button class="btn btn-primary" type="submit">Submit</button>
+
+</form>
+
+
+<hr>
+
+<h4>Explain</h4>
+1. ngForm - assign from name with #..formName..="ngForm"<br>
+<p>ex. #userForm="ngForm" </p>
+2. ngModel - assign to input element (much have name attribute )<br>
+<figure>
+    <figcaption>ex.</figcaption>
+    <pre>
+      <code spellcheck="false">
+          &lt;input type="text" name="name" id="name" ngModel&gt;
+      </code>
+    </pre>
+</figure>
+[ngModel] - assign to input element for set value to input (but when change value in not two-way binding)<br>
+<figure>
+    <figcaption>ex.</figcaption>
+    <pre>
+      <code spellcheck="false">
+          &lt;input type="text" name="name" id="name" [ngModel]="userModel.name"&gt;
+      </code>
+    </pre>
+</figure>
+[(ngModel)] - assign to input element for set value to input and it is two-way binding<br>
+<figure>
+    <figcaption>ex.</figcaption>
+    <pre>
+      <code spellcheck="false">
+          &lt;input type="text" name="name" id="name" [(ngModel)]="userModel.name"&gt;
+      </code>
+    </pre>
+</figure>
+
+3. ngModelGroup - assign for group element 
+<figure>
+    <figcaption>ex.</figcaption>
+    <pre>
+      <code spellcheck="false">
+          &lt;div ngModelGroup="address"&gt;
+            &lt;div class="form-group"&gt;
+              &lt;label for="">Street&lt;/label&gt;
+              &lt;input type="text" name="street" ngModel&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+              &lt;label for="">City&lt;/label&gt;
+              &lt;input type="text" name="city" ngModel&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;  
+      </code>
+    </pre>
+</figure>  
+
+
+<hr>
+<h4>Track control state and validity</h4>
+<table class="table table-hover table-striped">
+  <caption align="top"></caption>
+  <thead>
+    <th>State</th>
+    <th>Class if true</th>
+    <th>Class if false</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td>The control has been visited</td>
+      <td>ng-touched</td>
+      <td>ng-untouched</td>
+    </tr>
+    <tr>
+      <td>The control value has change</td>
+      <td>ng-dirty</td>
+      <td>ng-pristine</td>
+    </tr>
+    <tr>
+      <td>The control value is valid</td>
+      <td>ng-valid</td>
+      <td>ng-invalid</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+<h4>Detect class</h4>
+1.If want to get all ClassName in input  much assign #..name.. to input  
+<figure>
+    <figcaption>ex.</figcaption>
+    <pre>
+      <code spellcheck="false">
+          &lt;input type="text" &#35;userName name="name" id="name" ngModel&gt;
+          class Detect : &#123;<span>&#123;</span> userName.className <span>&#125;</span>&#125;
+      </code>
+    </pre>
+</figure>
+
+2.If want to get each class much assign #..name..="ngModel"
+<figure>
+    <figcaption>ex.</figcaption>
+    <pre>
+      <code spellcheck="false">
+        &lt;input type="text" &#35;userName="ngModel" name="name" id="name" ngModel&gt;
+          class Detect : &#123;<span>&#123;</span> userName.className <span>&#125;</span>&#125; &gt;
+        &lt;p> untouch : &#123;<span>&#123;</span>userName.untouched<span>&#125;</span> &#125; &lt;/p&gt;
+        &lt;p> touch : &#123;<span>&#123;</span>userName.touched<span>&#125;</span> &#125; &lt;/p&gt;
+        &lt;p&gt; pristine : &#123;<span>&#123;</span>  userName.pristine <span>&#125;</span> &#125; &lt;/p&gt;
+        &lt;p&gt; dirty : &#123;<span>&#123;</span> userName.dirty <span>&#125;</span> &#125; &lt;/p&gt;
+        &lt;p&gt; valid : &#123;<span>&#123;</span> userName.valid <span>&#125;</span> &#125; &lt;/p&gt;
+        &lt;p&gt; invalid : &#123;<span>&#123;</span>userName.invalid <span>&#125;</span> &#125; &lt;/p&gt;
+      </code>
+    </pre>
+</figure>
+
+
+
+<hr>
+
+<a href="https://www.freeformatter.com/html-entities.html" target="_blank" rel="">
+  **entity list 
+</a>
