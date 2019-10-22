@@ -21,27 +21,45 @@ export class FormReactiveComponent implements OnInit {
   //     postalCode:new FormControl('')
   //   })
   // });
-  registrationForm = this.fb.group({
-    userName:[''
-         ,[ 
-            Validators.required 
-            ,Validators.minLength(3) 
-            ,forbiddenNameValidator
-            ,fnForbiddenNameValidator(/password/) 
-          ]
-    ],
-    password:[''],
-    confirmPassword:[''],
-    address: this.fb.group({
-      city:[''],
-      state:[''],
-      postalCode:['']
-    })
-  } , { validator : PasswordValidator } )
-
+  registrationForm:FormGroup;
+  
   constructor(private fb:FormBuilder ) { }
 
   ngOnInit() {
+    this.registrationForm = this.fb.group({
+      userName:[''
+           ,[ 
+              Validators.required 
+              ,Validators.minLength(3) 
+              ,forbiddenNameValidator
+              ,fnForbiddenNameValidator(/password/) 
+            ]
+      ],
+      email:[''],
+      subscribe:[false],
+      password:[''],
+      confirmPassword:[''],
+      address: this.fb.group({
+        city:[''],
+        state:[''],
+        postalCode:['']
+      })
+    } , { validator : PasswordValidator } );
+
+
+    // this for  check subscribe much set validate to email 
+    // if uncheck clear validator to email 
+    this.registrationForm.get('subscribe').valueChanges
+    .subscribe(checkedValue=>{
+        const email = this.registrationForm.get('email');
+        if(checkedValue){
+          email.setValidators(Validators.required);
+        }else{
+          email.clearValidators();
+        }
+        email.updateValueAndValidity();
+    });
+
   }
 
   loadApiDataAll(){
@@ -66,6 +84,10 @@ export class FormReactiveComponent implements OnInit {
 
   get userName(){
     return this.registrationForm.get('userName');
+  }
+
+  get email(){
+    return this.registrationForm.get('email');
   }
 
 }
