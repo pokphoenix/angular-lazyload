@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder,Validators } from '@angular/forms';
 import { forbiddenNameValidator, fnForbiddenNameValidator } from '../../share/user-name.validator';
+import { PasswordValidator } from '../../share/password.validator';
 
 @Component({
   selector: 'app-form-reactive',
@@ -36,7 +37,7 @@ export class FormReactiveComponent implements OnInit {
       state:[''],
       postalCode:['']
     })
-  })
+  } , { validator : PasswordValidator } )
 
   constructor(private fb:FormBuilder ) { }
 
