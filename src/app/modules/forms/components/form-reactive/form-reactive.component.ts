@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder,Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form-reactive',
@@ -20,7 +20,7 @@ export class FormReactiveComponent implements OnInit {
   //   })
   // });
   registrationForm = this.fb.group({
-    userName:['Pok'],
+    userName:['',[Validators.required,Validators.minLength(3)]],
     password:[''],
     confirmPassword:[''],
     address: this.fb.group({
@@ -54,4 +54,9 @@ export class FormReactiveComponent implements OnInit {
       confirmPassword:'test'
     });
   }
+
+  get userName(){
+    return this.registrationForm.get('userName');
+  }
+
 }
