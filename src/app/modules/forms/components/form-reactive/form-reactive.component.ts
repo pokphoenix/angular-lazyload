@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder,Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder,Validators,FormArray } from '@angular/forms';
 import { forbiddenNameValidator, fnForbiddenNameValidator } from '../../share/user-name.validator';
 import { PasswordValidator } from '../../share/password.validator';
 
@@ -43,7 +43,8 @@ export class FormReactiveComponent implements OnInit {
         city:[''],
         state:[''],
         postalCode:['']
-      })
+      }) , 
+      alternateEmails: this.fb.array([])
     } , { validator : PasswordValidator } );
 
 
@@ -88,6 +89,14 @@ export class FormReactiveComponent implements OnInit {
 
   get email(){
     return this.registrationForm.get('email');
+  }
+
+  get alternateEmails(){
+    return this.registrationForm.get('alternateEmails') as FormArray;
+  }
+
+  addAlternateEmail(){
+    this.alternateEmails.push(this.fb.control(''));
   }
 
 }
