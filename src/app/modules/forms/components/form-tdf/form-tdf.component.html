@@ -1,13 +1,18 @@
-<form action="" #userForm="ngForm">
+<form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
 
     {{ userForm.value | json }}
     <hr>
     {{ userModel | json }}
     <hr>
 
+    <div class="alert alert-danger" *ngIf="errorMsg">
+      {{ errorMsg }}
+    </div>
+
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" #name="ngModel" required name="name" id="name"   placeholder="" [(ngModel)]="userModel.name"
+      <input type="text" #name="ngModel" required name="name" id="name"   placeholder="" 
+        [(ngModel)]="userModel.name"
         class="form-control"
         [class.is-invalid]="name.invalid && name.touched"
         >
@@ -134,7 +139,7 @@
           </div>
     </div> 
     
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button [disabled]="userForm.form.invalid || topicHasError" class="btn btn-primary" type="submit">Submit</button>
 
 </form>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../model/user';
+import { EnrollmentService } from '../../services/enrollment.service';
 
 @Component({
   selector: 'app-form-tdf',
@@ -10,8 +11,12 @@ export class FormTdfComponent implements OnInit {
   topics = ['Angular','React','Vue'];
 
   userModel = new User("","pok@mail.com",555,"Angular","morning",true);
-  topicHasError = true;
-  constructor() { }
+  topicHasError = false;
+  errorMsg = '';
+  
+  
+  constructor(private _enrollmentService : EnrollmentService) { }
+
 
   ngOnInit() {
   }
@@ -24,4 +29,15 @@ export class FormTdfComponent implements OnInit {
     }
   }
 
+  onSubmit(){
+    console.log(this.userModel);
+    this._enrollmentService.enroll(this.userModel)
+    .subscribe(
+      data => console.log("Success!",data) , 
+      error =>{
+        console.error("Error!", error);
+        this.errorMsg =error.statusText ;
+      }
+    );
+  }
 }

@@ -9,15 +9,18 @@ import { FormHeaderComponent } from './components/form-header/form-header.compon
 
 import { UtilsModule } from '../utils/utils.module';
 import { FormTdfComponent } from './components/form-tdf/form-tdf.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { EnrollmentService } from './services/enrollment.service';
 
 @NgModule({
   declarations: [FormNormalComponent, FormTemplateDrivenComponent, FormHeaderComponent, FormTdfComponent],
   imports: [
     CommonModule,
     FormsRoutingModule,
+    HttpClientModule,
     FormsModule,
     UtilsModule
-  ]
+  ],
+  providers:[EnrollmentService]
 })
 export class ModuleForms { }
