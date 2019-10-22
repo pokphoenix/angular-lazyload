@@ -66,6 +66,10 @@ export class SidebarUtilsService {
         {
           'url': '/form/tdf',
           'text': 'Form TDF'
+        },
+        {
+          'url': '/form/reactive',
+          'text': 'Form reactive'
         }
       ]
     },

@@ -4,6 +4,7 @@ import { FormNormalComponent } from './components/form-normal/form-normal.compon
 import { FormTemplateDrivenComponent } from './components/form-template-driven/form-template-driven.component';
 import { FormHeaderComponent } from './components/form-header/form-header.component';
 import { FormTdfComponent } from './components/form-tdf/form-tdf.component';
+import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:'normal',component:FormNormalComponent},
   {path:'template-driven',component:FormTemplateDrivenComponent},
   {path:'tdf',component:FormTdfComponent},
+  {path:'reactive',component:FormReactiveComponent},
   //{ path: 'hero/:id', component: HeroDetailComponent }
 
 ];
