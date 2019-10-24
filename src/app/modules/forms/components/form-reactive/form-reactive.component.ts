@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder,Validators,FormArray } from '@angul
 import { forbiddenNameValidator, fnForbiddenNameValidator } from '../../share/user-name.validator';
 import { PasswordValidator } from '../../share/password.validator';
 import { RegistrationService } from '../../services/registration.service';
+import { MustMatch } from '../../share/main.validator';
 
 
 @Component({
@@ -68,7 +69,11 @@ export class FormReactiveComponent implements OnInit {
       alternateEmails: this.fb.array([]),
       numberOfTickets: ['', Validators.required],
       tickets: new FormArray([])
-    } , { validator : PasswordValidator } );
+    } , 
+    
+      { validator : [PasswordValidator , MustMatch('password', 'confirmPassword')] } 
+    
+    );
 
 
     // this for  check subscribe much set validate to email 

@@ -59,9 +59,11 @@
         <label for="">Confirm Password</label>
         <input type="password" formControlName="confirmPassword"
             class="form-control"
-            [class.is-invalid]="registrationForm.errors?.misMatch"
+            [class.is-invalid]="registrationForm.errors?.misMatch 
+                || this.registrationForm.controls.confirmPassword.errors"
             >
-        <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">password do not match</small>
+        <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">password do not match</small><BR>
+        <small class="text-danger" *ngIf="this.registrationForm.controls.confirmPassword.errors">password must match</small>
     </div>
 
     <div formGroupName="address">
