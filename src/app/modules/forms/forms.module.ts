@@ -12,6 +12,7 @@ import { FormTdfComponent } from './components/form-tdf/form-tdf.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EnrollmentService } from './services/enrollment.service';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
+import { RegistrationService } from './services/registration.service';
 
 @NgModule({
   declarations: [FormNormalComponent, FormTemplateDrivenComponent, FormHeaderComponent, FormTdfComponent, FormReactiveComponent],
@@ -23,6 +24,6 @@ import { FormReactiveComponent } from './components/form-reactive/form-reactive.
     UtilsModule,
     ReactiveFormsModule
   ],
-  providers:[EnrollmentService]
+  providers:[EnrollmentService,RegistrationService]
 })
 export class ModuleForms { }

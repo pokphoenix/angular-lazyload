@@ -1,6 +1,6 @@
 <app-form-header></app-form-header>
 <h2>Registor form</h2>
-<form [formGroup]="registrationForm">
+<form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="name">username</label>
         <input type="text" formControlName="userName"  
@@ -84,8 +84,8 @@
                 class="form-control"  >
         </div>
     </div>
-    <button type="reset" class="btn btn-danger" >Reset</button>
-    <button  class="btn btn-primary ml-2" type="submit">Registor</button>
+    <button (click)="onReset()"  type="button" class="btn btn-danger" >Reset</button>
+    <button [disabled]="!registrationForm.valid"  class="btn btn-primary ml-2" type="submit">Registor</button>
     <button (click)="loadApiDataAll()"  class="btn btn-secondary ml-2" type="button">Load API data All</button>
     <button (click)="loadApiDataPatch()"  class="btn btn-dark ml-2" type="button">Load API data PAtch</button>
 </form>
