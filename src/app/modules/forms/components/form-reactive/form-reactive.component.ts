@@ -25,7 +25,24 @@ export class FormReactiveComponent implements OnInit {
   // });
   registrationForm:FormGroup;
   
-  
+  get userName(){
+    return this.registrationForm.get('userName');
+  }
+
+  get email(){
+    return this.registrationForm.get('email');
+  }
+
+  get alternateEmails(){
+    return this.registrationForm.get('alternateEmails') as FormArray;
+  }
+
+
+  get f() { return this.registrationForm.controls; }
+
+  get tickets(){
+    return this.f.tickets as FormArray; 
+  }
 
   constructor(private fb:FormBuilder,private _registrationService:RegistrationService ) { }
 
@@ -48,7 +65,9 @@ export class FormReactiveComponent implements OnInit {
         state:[''],
         postalCode:['']
       }) , 
-      alternateEmails: this.fb.array([])
+      alternateEmails: this.fb.array([]),
+      numberOfTickets: ['', Validators.required],
+      tickets: new FormArray([])
     } , { validator : PasswordValidator } );
 
 
@@ -104,9 +123,11 @@ export class FormReactiveComponent implements OnInit {
     //   this.alternateEmails.removeAt(0)
     // }
 
-    // clear formArrat method 3     THE BEST method 
-    this.alternateEmails.clear();
+    // clear formArrat method 3     THE BEST method  
+    this.alternateEmails.clear(); // angular8++ 
+    this.tickets.clear(); // angular8++ 
 
+    const numberOfTickets = 1;
     
     this.registrationForm.setValue({ // much setting all value in form  
       userName:'Pok',
@@ -122,8 +143,19 @@ export class FormReactiveComponent implements OnInit {
       //alternateEmails: ['mail1']  //  setvalue in this  will work if has array before click this method
       //important if you create more than one array  you much set the same array length
       //ex  alternateEmails: ['mail1','mail2']     
-      alternateEmails: []     
+      alternateEmails: [],
+      numberOfTickets: numberOfTickets ,
+      tickets: []
     });
+
+    
+    for(let i=1 ; i <= numberOfTickets ; i++){
+      this.tickets.push(this.fb.group({
+          name: ['ticket '+i, Validators.required],
+          email: ['ticket'+i+'@mail.com', [Validators.required, Validators.email]]
+      }));
+    }
+
 
     // this for push array
     let arrCount = 2; 
@@ -143,17 +175,7 @@ export class FormReactiveComponent implements OnInit {
     });
   }
 
-  get userName(){
-    return this.registrationForm.get('userName');
-  }
-
-  get email(){
-    return this.registrationForm.get('email');
-  }
-
-  get alternateEmails(){
-    return this.registrationForm.get('alternateEmails') as FormArray;
-  }
+  
 
   addAlternateEmail(){
     this.alternateEmails.push(this.fb.control(''));
@@ -171,6 +193,7 @@ export class FormReactiveComponent implements OnInit {
     // console.log("onReset : ",storeData); // show value before click this method
 
     this.alternateEmails.clear();
+    this.tickets.clear();
     // much use this for clear all validate class
     this.registrationForm.reset();  // this for reset value ( it is the same use   button type=reset )
     // above function found problem  array is not empty  (it has length and value is null)
@@ -187,8 +210,34 @@ export class FormReactiveComponent implements OnInit {
         state:'',
         postalCode:''
       },
-      alternateEmails: []     
+      alternateEmails: [] ,
+      numberOfTickets: '' ,
+      tickets: [] 
     });
   
   }
+
+  onChangeTickets(e) {
+    const numberOfTickets = e.target.value || 0;
+    if (this.tickets.length < numberOfTickets) {
+        for (let i = this.tickets.length; i < numberOfTickets; i++) {
+            this.tickets.push(this.fb.group({
+                name: ['', Validators.required],
+                email: ['', [Validators.required, Validators.email]]
+            }));
+        }
+    } else {
+        // remove from lastest tickets
+        for (let i = this.tickets.length; i >= numberOfTickets; i--) {
+            this.tickets.removeAt(i);   
+        }
+    }
+  }
+
+  onClearTickets() {
+    // clear errors and reset ticket fields
+    
+    this.tickets.reset();
+  }
+
 }
