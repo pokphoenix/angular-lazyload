@@ -71,38 +71,47 @@ export class FormReactiveComponent implements OnInit {
     // let storeData = this.registrationForm.getRawValue();
     // console.log("loadApiDataAll : ",storeData); 
     
-    // this for remove array before click this method 
-    while (this.alternateEmails.length !== 0) {
-      this.alternateEmails.removeAt(0)
-    }
-
+    // clear formArray method 1
     // for (const key in this.alternateEmails.value) {
-    //   console.log("p : "+key);
+    //    this.alternateEmails.removeAt(0);      
+    /*//   console.log("p : "+key);
     //   this.alternateEmails.removeAt(key);      
-    //important if use this method  array will not empty 
-    //explain  
-      // arr = ['p1','p2','p3']
-      // arr.removeAt(0) ; 
-      // arr= ['p2','p3']
-      // arr.removeAt(1) ;
-      // arr=['p2'];
-      // arr.removeAt(2) ;  // not found index 2 in lastest arr 
-      // arr=['p2'];
-      //to fix that situation 
-      //use  arr.removeAt(0) only  
-      //explain 
-      // arr = ['p1','p2','p3']
-      // arr.removeAt(0);
-      // arr = ['p2','p3']
-      // arr.removeAt(0);
-      // arr = ['p3']
-      // arr.removeAt(0);
-      // arr = []
+    // important if use this method  array will not empty 
+    // explain  
+    //   arr = ['p1','p2','p3']
+    //   arr.removeAt(0) ; 
+    //   arr= ['p2','p3']
+    //   arr.removeAt(1) ;
+    //   arr=['p2'];
+    //   arr.removeAt(2) ;  // not found index 2 in lastest arr 
+    //   arr=['p2'];
+    //   to fix that situation 
+    //   use  arr.removeAt(0) only  
+    //   explain 
+    //   arr = ['p1','p2','p3']
+    //   arr.removeAt(0);
+    //   arr = ['p2','p3']
+    //   arr.removeAt(0);
+    //   arr = ['p3']
+    //   arr.removeAt(0);
+    //   arr = []*/
     // }
+
+
+    // clear formArray method 2
+    // this for remove array before click this method 
+    // while (this.alternateEmails.length !== 0) {
+    //   this.alternateEmails.removeAt(0)
+    // }
+
+    // clear formArrat method 3     THE BEST method 
+    this.alternateEmails.clear();
+
+    
     this.registrationForm.setValue({ // much setting all value in form  
       userName:'Pok',
       email:'pok@mail.com',
-      subscribe:[true],
+      subscribe:true,
       password:'test',
       confirmPassword:'test',
       address:{
@@ -160,17 +169,17 @@ export class FormReactiveComponent implements OnInit {
   onReset(){
     // let storeData = this.registrationForm.getRawValue();
     // console.log("onReset : ",storeData); // show value before click this method
-    // this.registrationForm.reset();  // this for reset value ( it is the same use   button type=reset )
+
+    this.alternateEmails.clear();
+    // much use this for clear all validate class
+    this.registrationForm.reset();  // this for reset value ( it is the same use   button type=reset )
     // above function found problem  array is not empty  (it has length and value is null)
 
-
-    while (this.alternateEmails.length !== 0) {
-      this.alternateEmails.removeAt(0);
-    }
+    
     this.registrationForm.setValue({
       userName:'',
       email:'',
-      subscribe:[false],
+      subscribe:false,        // important  do not use [false]  because  it is array not boolean 
       password:'',
       confirmPassword:'',
       address:{
