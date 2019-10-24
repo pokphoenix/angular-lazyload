@@ -156,6 +156,7 @@ export class FormReactiveComponent implements OnInit {
     
     for(let i=1 ; i <= numberOfTickets ; i++){
       this.tickets.push(this.fb.group({
+          id:i,
           name: ['ticket '+i, Validators.required],
           email: ['ticket'+i+'@mail.com', [Validators.required, Validators.email]]
       }));
@@ -227,6 +228,7 @@ export class FormReactiveComponent implements OnInit {
     if (this.tickets.length < numberOfTickets) {
         for (let i = this.tickets.length; i < numberOfTickets; i++) {
             this.tickets.push(this.fb.group({
+                id:[i],
                 name: ['', Validators.required],
                 email: ['', [Validators.required, Validators.email]]
             }));
@@ -244,5 +246,11 @@ export class FormReactiveComponent implements OnInit {
     
     this.tickets.reset();
   }
+
+
+  trackById(index: number, item) {
+    return item.id;
+  }
+
 
 }

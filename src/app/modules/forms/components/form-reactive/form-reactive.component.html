@@ -1,92 +1,94 @@
 <app-form-header></app-form-header>
 <h2>Registor form</h2>
 <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="name">username</label>
-        <input type="text" formControlName="userName"  
-            name="name" id="name" placeholder="" 
-            class="form-control"
-            [class.is-invalid]="userName.invalid 
-            && userName.touched"
-        >
-        <!--<small class="text-danger"
-            [class.d-none]="registrationForm.get('userName').valid || 
-            registrationForm.get('userName').untouched"
-        >Username is required</small>-->
-        <div *ngIf="userName.invalid 
-            && userName.touched">
-            <small class="text-danger" *ngIf="userName.errors?.required">Username is Require</small>
-            <small class="text-danger" *ngIf="userName.errors?.minlength">Username must be at least 3 characters</small>
-            <small class="text-danger" *ngIf="userName.errors?.forbiddenName"> {{ userName.errors?.forbiddenName.value }} Username not allowed</small>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="">Email</label>
-        <button class="btn btn-secondary btn-sm m-2" type="button"
-            (click)="addAlternateEmail()"
-        >
-            Add e-mail
-        </button>
-        <input type="email" formControlName="email"
-            class="form-control"
-            [class.is-invalid]="email.invalid
-            && email.touched"
+    <fieldset>
+        <!-- <legend>Registor form :</legend> -->
+        <div class="form-group">
+            <label for="name">username</label>
+            <input type="text" formControlName="userName"  
+                name="name" id="name" placeholder="" 
+                class="form-control"
+                [class.is-invalid]="userName.invalid 
+                && userName.touched"
             >
-            <small class="text-danger" 
-                [class.d-none]="email.valid || email.untouched"
-            >Email is required</small>
-        <div formArrayName="alternateEmails" *ngFor="let email of alternateEmails.controls;let i = index;">
-            <input type="text" class="form-control my-1" [formControlName]="i">
-        </div>    
-    </div>
-    <div class="form-check">
-        <input type="checkbox" formControlName="subscribe"
-            class="form-check-input" 
-        >
-        <label class="form-check-label">
-            Send me promotion offers (if checked must be input email)
-        </label>
-    </div>
-
-
-    <div class="form-group">
-        <label for="">Password</label>
-        <input type="password" formControlName="password"
-            class="form-control" >
-    </div>
-    <div class="form-group">
-        <label for="">Confirm Password</label>
-        <input type="password" formControlName="confirmPassword"
-            class="form-control"
-            [class.is-invalid]="registrationForm.errors?.misMatch 
-                || this.registrationForm.controls.confirmPassword.errors"
+            <!--<small class="text-danger"
+                [class.d-none]="registrationForm.get('userName').valid || 
+                registrationForm.get('userName').untouched"
+            >Username is required</small>-->
+            <div *ngIf="userName.invalid 
+                && userName.touched">
+                <small class="text-danger" *ngIf="userName.errors?.required">Username is Require</small>
+                <small class="text-danger" *ngIf="userName.errors?.minlength">Username must be at least 3 characters</small>
+                <small class="text-danger" *ngIf="userName.errors?.forbiddenName"> {{ userName.errors?.forbiddenName.value }} Username not allowed</small>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="">Email</label>
+            <button class="btn btn-secondary btn-sm m-2" type="button"
+                (click)="addAlternateEmail()"
             >
-        <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">password do not match</small><BR>
-        <small class="text-danger" *ngIf="this.registrationForm.controls.confirmPassword.errors">password must match</small>
-    </div>
-
-    <div formGroupName="address">
+                Add e-mail
+            </button>
+            <input type="email" formControlName="email"
+                class="form-control"
+                [class.is-invalid]="email.invalid
+                && email.touched"
+                >
+                <small class="text-danger" 
+                    [class.d-none]="email.valid || email.untouched"
+                >Email is required</small>
+            <div formArrayName="alternateEmails" *ngFor="let email of alternateEmails.controls;let i = index;">
+                <input type="text" class="form-control my-1" [formControlName]="i">
+            </div>    
+        </div>
+        <div class="form-check">
+            <input type="checkbox" formControlName="subscribe"
+                class="form-check-input" 
+            >
+            <label class="form-check-label">
+                Send me promotion offers (if checked must be input email)
+            </label>
+        </div>
+    
+    
         <div class="form-group">
-            <label for="">City</label>
-            <input type="text"
-                formControlName="city"
-                class="form-control"  >
+            <label for="">Password</label>
+            <input type="password" formControlName="password"
+                class="form-control" >
         </div>
         <div class="form-group">
-            <label for="">State</label>
-            <input type="text"
-                formControlName="state"
-                class="form-control"  >
+            <label for="">Confirm Password</label>
+            <input type="password" formControlName="confirmPassword"
+                class="form-control"
+                [class.is-invalid]="registrationForm.errors?.misMatch 
+                    || this.registrationForm.controls.confirmPassword.errors"
+                >
+            <small class="text-danger" *ngIf="registrationForm.errors?.misMatch">password do not match</small><BR>
+            <small class="text-danger" *ngIf="this.registrationForm.controls.confirmPassword.errors">password must match</small>
+        </div>
+    
+        <div formGroupName="address">
+            <div class="form-group">
+                <label for="">City</label>
+                <input type="text"
+                    formControlName="city"
+                    class="form-control"  >
+            </div>
+            <div class="form-group">
+                <label for="">State</label>
+                <input type="text"
+                    formControlName="state"
+                    class="form-control"  >
+            </div>
+            <div class="form-group">
+                <label for="">Postal Code</label>
+                <input type="text"
+                    formControlName="postalCode"
+                    class="form-control"  >
+            </div>
         </div>
         <div class="form-group">
-            <label for="">Postal Code</label>
-            <input type="text"
-                formControlName="postalCode"
-                class="form-control"  >
-        </div>
-    </div>
-    <div class="form-group">
             <label for="">Number of Tickets</label>
             <select  
                 formControlName="numberOfTickets"
@@ -101,31 +103,33 @@
                 </option>
             </select>
         </div>
-    <div *ngFor="let ticket of tickets.controls; let i = index" class="list-group list-group-flush">
-        <div class="list-group-item">
-            <h5 class="card-title">Ticket {{i + 1}}</h5>
-            <div [formGroup]="ticket" class="form-row">
-                <div class="form-group col-6">
-                    <label>Name</label>
-                    <input type="text" formControlName="name" class="form-control" 
-                    [ngClass]="{ 'is-invalid':  ticket.controls.name.invalid &&   ticket.controls.name.touched }" />
-                    <small class="text-danger" 
-                    [class.d-none]="ticket.controls.name.valid || ticket.controls.name.untouched"
-                    >Ticket Name {{i+1}} is required</small>
-                </div>
-                <div class="form-group col-6">
-                    <label>Email</label>
-                    <input type="text" formControlName="email" class="form-control" 
-                    [ngClass]="{ 'is-invalid':ticket.controls.email.invalid &&   ticket.controls.email.touched }" />
-                    <div *ngIf="ticket.controls.email.invalid 
-                    && ticket.controls.email.touched">
-                        <small class="text-danger" *ngIf="ticket.controls.email.errors?.required">Ticket Email {{i+1}} is Require</small>
-                        <small class="text-danger" *ngIf="ticket.controls.email.errors?.email">Ticket Email {{i+1}} must be a valid email address</small>
+        <div *ngFor="let ticket of tickets.controls; let i = index; trackBy: trackById " class="list-group list-group-flush">
+            <div class="list-group-item">
+                <h5 class="card-title">Ticket {{i + 1}}</h5>
+                <div [formGroup]="ticket" class="form-row">
+                    <div class="form-group col-6">
+                        <label>Name</label>
+                        <input type="text" formControlName="name" class="form-control" 
+                        [ngClass]="{ 'is-invalid':  ticket.controls.name.invalid &&   ticket.controls.name.touched }" />
+                        <small class="text-danger" 
+                        [class.d-none]="ticket.controls.name.valid || ticket.controls.name.untouched"
+                        >Ticket Name {{i+1}} is required</small>
+                    </div>
+                    <div class="form-group col-6">
+                        <label>Email</label>
+                        <input type="text" formControlName="email" class="form-control" 
+                        [ngClass]="{ 'is-invalid':ticket.controls.email.invalid &&   ticket.controls.email.touched }" />
+                        <div *ngIf="ticket.controls.email.invalid 
+                        && ticket.controls.email.touched">
+                            <small class="text-danger" *ngIf="ticket.controls.email.errors?.required">Ticket Email {{i+1}} is Require</small>
+                            <small class="text-danger" *ngIf="ticket.controls.email.errors?.email">Ticket Email {{i+1}} must be a valid email address</small>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        
+    </fieldset>
     <br>
 
     <button (click)="onReset()"  type="button" class="btn btn-danger" >Reset</button>
