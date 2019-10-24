@@ -48,6 +48,25 @@ export class FormReactiveComponent implements OnInit {
   constructor(private fb:FormBuilder,private _registrationService:RegistrationService ) { }
 
   ngOnInit() {
+    
+    this.prepareForm();
+
+    // this for  check subscribe much set validate to email 
+    // if uncheck clear validator to email 
+    this.registrationForm.get('subscribe').valueChanges
+    .subscribe(checkedValue=>{
+        const email = this.registrationForm.get('email');
+        if(checkedValue){
+          email.setValidators(Validators.required);
+        }else{
+          email.clearValidators();
+        }
+        email.updateValueAndValidity();
+    });
+
+  }
+
+  prepareForm(){
     this.registrationForm = this.fb.group({
       userName:[''
            ,[ 
@@ -74,21 +93,6 @@ export class FormReactiveComponent implements OnInit {
       { validator : [PasswordValidator , MustMatch('password', 'confirmPassword')] } 
     
     );
-
-
-    // this for  check subscribe much set validate to email 
-    // if uncheck clear validator to email 
-    this.registrationForm.get('subscribe').valueChanges
-    .subscribe(checkedValue=>{
-        const email = this.registrationForm.get('email');
-        if(checkedValue){
-          email.setValidators(Validators.required);
-        }else{
-          email.clearValidators();
-        }
-        email.updateValueAndValidity();
-    });
-
   }
 
   loadApiDataAll(){
@@ -194,34 +198,7 @@ export class FormReactiveComponent implements OnInit {
     );
   }
 
-  onReset(){
-    // let storeData = this.registrationForm.getRawValue();
-    // console.log("onReset : ",storeData); // show value before click this method
-
-    this.alternateEmails.clear();
-    this.tickets.clear();
-    // much use this for clear all validate class
-    this.registrationForm.reset();  // this for reset value ( it is the same use   button type=reset )
-    // above function found problem  array is not empty  (it has length and value is null)
-
-    
-    this.registrationForm.setValue({
-      userName:'',
-      email:'',
-      subscribe:false,        // important  do not use [false]  because  it is array not boolean 
-      password:'',
-      confirmPassword:'',
-      address:{
-        city:'',
-        state:'',
-        postalCode:''
-      },
-      alternateEmails: [] ,
-      numberOfTickets: '' ,
-      tickets: [] 
-    });
-  
-  }
+ 
 
   onChangeTickets(e) {
     const numberOfTickets = e.target.value || 0;
@@ -252,5 +229,38 @@ export class FormReactiveComponent implements OnInit {
     return item.id;
   }
 
+  onReset(){
+
+    this.prepareForm();
+
+    /*
+    // let storeData = this.registrationForm.getRawValue();
+    // console.log("onReset : ",storeData); // show value before click this method
+
+    this.alternateEmails.clear();
+    this.tickets.clear();
+    // much use this for clear all validate class
+    this.registrationForm.reset();  // this for reset value ( it is the same use   button type=reset )
+    // above function found problem  array is not empty  (it has length and value is null)
+
+    
+    this.registrationForm.setValue({
+      userName:'',
+      email:'',
+      subscribe:false,        // important  do not use [false]  because  it is array not boolean 
+      password:'',
+      confirmPassword:'',
+      address:{
+        city:'',
+        state:'',
+        postalCode:''
+      },
+      alternateEmails: [] ,
+      numberOfTickets: '' ,
+      tickets: [] 
+    });
+    */
+  
+  }
 
 }
