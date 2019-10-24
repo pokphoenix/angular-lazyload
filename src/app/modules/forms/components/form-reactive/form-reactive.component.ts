@@ -132,9 +132,14 @@ export class FormReactiveComponent implements OnInit {
     //   this.alternateEmails.removeAt(0)
     // }
 
-    // clear formArrat method 3     THE BEST method  
-    this.alternateEmails.clear(); // angular8++ 
+    // clear formArray method 3     THE BEST method  
+    // this.alternateEmails.clear(); // angular8++ 
     this.tickets.clear(); // angular8++ 
+
+    // clear formArray method 4 
+    (this.registrationForm.get("alternateEmails") as FormArray)['controls'].splice(0);
+
+
 
     const numberOfTickets = 1;
     
@@ -230,20 +235,16 @@ export class FormReactiveComponent implements OnInit {
   }
 
   onReset(){
-
     this.prepareForm();
-
     /*
     // let storeData = this.registrationForm.getRawValue();
     // console.log("onReset : ",storeData); // show value before click this method
-
     this.alternateEmails.clear();
     this.tickets.clear();
     // much use this for clear all validate class
     this.registrationForm.reset();  // this for reset value ( it is the same use   button type=reset )
     // above function found problem  array is not empty  (it has length and value is null)
 
-    
     this.registrationForm.setValue({
       userName:'',
       email:'',
