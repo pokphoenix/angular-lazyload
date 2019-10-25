@@ -1,0 +1,57 @@
+<h4> Drag image to Border </h4>
+
+<div class="border border-danger" style="width:350px;height:80px;" 
+    id="div1" 
+    (drop)="drop($event)" 
+    (dragover)="allowDrop($event)">
+</div>
+<br>
+<img id="drag1" src="assets/img/img_logo.gif" 
+    draggable="true"  
+    (dragstart)="drag($event)" 
+    width="336" height="69">
+<hr>
+<h4>
+    drag list to table 
+</h4>
+<div class="row">
+    <div class="col-6"  (drop)="dropCarToList($event)" 
+    (dragover)="allowDrop($event)" >
+        <ul class="list-group">
+            <li  class="list-group-item" *ngFor="let car of availableCars" 
+                [attr.data-vin]="car.vin"
+                draggable="true" 
+                (dragstart)="dragCarStart($event,car)" 
+                (dragend)="dragCarEnd($event)"  > 
+                <img src="https://www.primefaces.org/primeng/assets/showcase/images/demo/car/{{car.brand}}.png" style="float:left" draggable="false">
+                {{ car.year }}
+            </li>
+        </ul>
+    </div>
+    <div class="col-6 border " 
+        (drop)="dropCarToTable($event)" 
+        (dragover)="allowDrop($event)"
+    >
+        <table class="table table-hover table-bordered table-striped"  >
+            <thead class="thead-dark">
+                <tr>
+                    <th class="w-50">Brand</th>
+                    <th class="w-25">Year</th>
+                    <th class="w-25">Color</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let car of selectedCars;"
+                        draggable="true" 
+                        (dragstart)="dragCarStart($event,car)" 
+                        (dragend)="dragCarEnd($event)" 
+                    >
+                        <td scope="row">{{ car.brand }}</td>
+                        <td>{{ car.year }}</td>
+                        <td>{{ car.color }}</td>
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</div>
+

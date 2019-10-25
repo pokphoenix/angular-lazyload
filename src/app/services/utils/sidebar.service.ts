@@ -108,6 +108,14 @@ export class SidebarUtilsService {
           'text': 'Service Employee Json'
         }
       ]
+    },
+    {text:"special",url:"/special",
+      sub:[
+        {
+          'url': '/special/drag-and-drop-table',
+          'text': 'Drag And Drop'
+        }
+      ]
     }
   ]
 
