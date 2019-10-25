@@ -89,6 +89,7 @@ a.sidebar-item{
                                 <li class="sidebar-item" *ngFor=" let sub of sidebar.sub " 
                                     [routerLink]="sub.url" 
                                     routerLinkActive="active"
+                                    
                                 >
                                     {{sub.text}}  
                                 </li>
@@ -97,6 +98,7 @@ a.sidebar-item{
                         <a class="sidebar-item" *ngIf="sidebar.sub==null" 
                             [routerLink]="sidebar.url" 
                             routerLinkActive="active"
+                            
                         >
                             {{sidebar.text}}
                         </a>
@@ -104,7 +106,7 @@ a.sidebar-item{
                 </ul>
             </section>
             <section class="main">
-                    <router-outlet></router-outlet>
+                    <router-outlet (activate)="onActivate($event)"></router-outlet>
             </section>
         </div>   
     </div>
