@@ -22,8 +22,8 @@ export class DragAndDropTableComponent implements OnInit {
 
   dragCarStart(event,car: Car) {
     console.log("dragStart",car);
-    console.log(event.target.dataset.vin); // get data-vin value 
-    console.log(document.querySelectorAll("[data-vin='"+car.vin+"']"))  // get element 
+    console.log(event.target.dataset.vin); //! get data-vin value 
+    console.log(document.querySelectorAll("[data-vin='"+car.vin+"']"))  //! get element
     this.draggedCar = car;
   }
 

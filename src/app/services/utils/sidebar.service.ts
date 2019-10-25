@@ -48,6 +48,7 @@ export class SidebarUtilsService {
           'url': '/basic/data-sharing/child-parent',
           'text': 'Data Sharing Child to Parent'
         }
+       
       ] 
     },
     {text:"customers",url:"/customers" },
@@ -70,6 +71,10 @@ export class SidebarUtilsService {
         {
           'url': '/form/reactive',
           'text': 'Form reactive'
+        },
+        {
+          'url': '/form/binding-data',
+          'text': 'Binding data'
         }
       ]
     },

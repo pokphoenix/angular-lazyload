@@ -5,6 +5,7 @@ import { FormTemplateDrivenComponent } from './components/form-template-driven/f
 import { FormHeaderComponent } from './components/form-header/form-header.component';
 import { FormTdfComponent } from './components/form-tdf/form-tdf.component';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
+import { FormBindingDataComponent } from './components/binding-data/binding-data.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:'template-driven',component:FormTemplateDrivenComponent},
   {path:'tdf',component:FormTdfComponent},
   {path:'reactive',component:FormReactiveComponent},
+  {path:'binding-data',component:FormBindingDataComponent},
   //{ path: 'hero/:id', component: HeroDetailComponent }
 
 ];

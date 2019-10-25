@@ -13,9 +13,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { EnrollmentService } from './services/enrollment.service';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
 import { RegistrationService } from './services/registration.service';
+import { FormBindingDataComponent } from './components/binding-data/binding-data.component';
 
 @NgModule({
-  declarations: [FormNormalComponent, FormTemplateDrivenComponent, FormHeaderComponent, FormTdfComponent, FormReactiveComponent],
+  declarations: [FormNormalComponent
+    , FormTemplateDrivenComponent
+    , FormHeaderComponent
+    , FormTdfComponent
+    , FormReactiveComponent
+    , FormBindingDataComponent],
   imports: [
     CommonModule,
     FormsRoutingModule,

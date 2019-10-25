@@ -1,0 +1,19 @@
+<h4> Add 2 number input </h4>
+num1 : <input type="number"  [(ngModel)]="num1" ><BR>
+    +<BR>
+num2 : <input type="number" [(ngModel)]="num2" ><BR>
+= <br> 
+
+<h5>Method 1  number * 1 </h5>
+
+<span *ngIf=" num1 !=null && num2 !=null " >
+        {{ num1*1 +num2*1 }}
+</span>
+
+<h5>Method 2 use function </h5>
+
+<span *ngIf=" num1 !=null && num2 !=null " >
+        {{ ConvertToInt(num1) + ConvertToInt(num2) }}
+</span>
+
+
