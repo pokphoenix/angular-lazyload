@@ -44,24 +44,51 @@ section.main{
     cursor: pointer;
 }
 
+.ul-parent ,a.sidebar-item,.thirld-child-ul-parent,a.child-item,.thirld-child-sidebar-item{
+    padding:.75rem 1.25rem;
+}
+
 a.sidebar-item{
-    padding: .75rem 1.25rem;
+    
     text-decoration: none;
 }
 
-.ul-parent{
-    padding:.75rem 1.25rem;
-}
+
 
 .ul-child{
     padding: 0;list-style-type: none;
     background:white !important;
 }
 
-.ul-child .sidebar-item{
-    padding: .75rem 1.25rem;
+.ul-child .sidebar-item {
+    /* padding: .75rem 1.25rem; */
+    /* border-top:1px solid #ccc; */
+}
+
+.child-item,.thirld-child-row-ul,.thirld-child-sidebar-item{
     border-top:1px solid #ccc;
 }
+
+.thirld-child-row-ul{
+
+}
+.thirld-child-ul-parent {
+    padding-left: 2.5rem;
+}
+
+.thirld-child-ul-child{
+
+}
+
+a.child-item{
+    padding-left: 2.5rem;
+}
+
+.thirld-child-sidebar-item{
+    padding-left: 3.75rem;
+}
+
+
 </style>
 
 <body style="display: flex;min-height: 100vh;flex-direction: column;">
@@ -86,12 +113,35 @@ a.sidebar-item{
                                 <i class="fas fa-chevron-left mt-1 float-right"></i>
                             </div>
                             <ul class="ul-child" style=" display:none;">
-                                <li class="sidebar-item" *ngFor=" let sub of sidebar.sub " 
-                                    [routerLink]="sub.url" 
-                                    routerLinkActive="active"
-                                    
-                                >
-                                    {{sub.text}}  
+                                <li class="sidebar-item" *ngFor=" let sub of sidebar.sub " >
+                                    <div *ngIf="sub.sub!=null" class="row-ul thirld-child-row-ul" >
+                                        <div class="ul-parent thirld-child-ul-parent" 
+                                            [class.active]="this.router.url.split('/')[1].toUpperCase() == sub.text.toUpperCase()"
+                                        >
+                                            {{sub.text | titlecase }}
+                                            <i class="fas fa-chevron-left mt-1 float-right"></i>
+                                        </div>
+                                        <ul class="ul-child thirld-child-ul-child" style=" display:none;">
+                                            <li class="sidebar-item thirld-child-sidebar-item" *ngFor=" let childSub of sub.sub " 
+                                                [routerLink]="childSub.url" 
+                                                routerLinkActive="active"
+                                                
+                                            >
+                                                {{childSub.text}}  
+                                                
+                                                
+            
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <a class="sidebar-item child-item" *ngIf="sub.sub==null" 
+                                        [routerLink]="sub.url" 
+                                        routerLinkActive="active"
+                                        
+                                    >
+                                        {{sub.text}}
+                                    </a>  
                                 </li>
                             </ul>
                         </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarUtilsService } from './services/utils/sidebar.service';
 import { Router } from '@angular/router';
+import UtilsService from './services/utils/utils.service';
 
 declare var $: any;
 
@@ -9,43 +10,39 @@ declare var $: any;
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent extends UtilsService implements OnInit {
   title = 'Tutorial';
   sidebars = [];
 
   constructor(public router: Router,private _sidebarUtilsService : SidebarUtilsService){
+    super();
     this.sidebars = _sidebarUtilsService.getSidebarUrl();   
   }
   
   ngOnInit() {
     $(function(){
       $(".ul-parent").on("click",function(){
-        $(this).closest(".row-ul").find(".ul-child").toggle();
-        let open = ($(this).closest(".row-ul").find(".fa-chevron-down").length>0);
+        $(this).siblings(".ul-child").toggle();
+        
+        // .closest(".row-ul").closest(".ul-child").toggle();
+        let open = ($(this).find(".fa-chevron-down").length>0);
         if(open){
-          $(this).closest(".row-ul").find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-left");
+          $(this).find(".fa-chevron-down").removeClass("fa-chevron-down").addClass("fa-chevron-left");
         }else{
-          $(this).closest(".row-ul").find(".fa-chevron-left").addClass("fa-chevron-down").removeClass("fa-chevron-left");
+          $(this).find(".fa-chevron-left").addClass("fa-chevron-down").removeClass("fa-chevron-left");
         }
       });
     })
 
-    
-    
+    let {quotient,remainder}=this.intDiv(10,3) // 3 1
+    console.log(quotient,remainder);
   }
 
-  onActivate(){
-    //window.scroll(0,0);
-    //or document.body.scrollTop = 0;
-    //or document.querySelector('body').scrollTo(0,0)
-    let scrollToTop = window.setInterval(() => {
-        let pos = window.pageYOffset;
-        if (pos > 0) {
-            window.scrollTo(0, pos - 20); // how far to scroll on each step
-        } else {
-            window.clearInterval(scrollToTop);
-        }
-    }, 16);
+  
+  intDiv(dividend:number, divisor:number)  {
+    let quotient = dividend / divisor ;
+    let remainder = dividend % divisor ;
+    return {quotient,remainder}  ;
   }
-
+  
 }

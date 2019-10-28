@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import Utils from 'src/app/services/utils/utils';
+import UtilsService from 'src/app/services/utils/utils.service';
 
 @Component({
   selector: 'app-basic-ng-for-ex4',
   templateUrl: './ex4.component.html',
   styleUrls: ['./ex4.component.css']
 })
-export class BasicNgForEx4Component extends Utils implements OnInit {
+export class BasicNgForEx4Component extends UtilsService implements OnInit {
 
   constructor() {
     super();
