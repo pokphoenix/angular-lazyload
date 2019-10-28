@@ -13,13 +13,10 @@ export class DropdownUrlComponent implements OnInit {
 
   @Input() parentBaseUrl = "";
   @Input() formUrlLists = {};
-
-  breadcrumbs = [];
   currentUrl="";  
   
-  constructor(public router: Router ,private route:ActivatedRoute,@Inject('BASE_URL') baseUrl: string) {
+  constructor(public router: Router ,private route:ActivatedRoute) {
     // console.log("DropdownUrlComponent constructor");
-    console.log("baseUrl : "+baseUrl);
   }
 
   ngOnInit() {
@@ -29,7 +26,6 @@ export class DropdownUrlComponent implements OnInit {
     }else{
       let url = UtilRoutes.getCurrentUrlWithOutParamId(this.router,this.route);
       this.currentUrl = this.parentBaseUrl;
-      this.breadcrumbs = url.split(';')[0].split("/");
     }
 
     $(function(){
@@ -40,7 +36,7 @@ export class DropdownUrlComponent implements OnInit {
   getCurrentUrl(router:Router,route:ActivatedRoute){
     let navigateUrl = router.url;
     this.currentUrl = navigateUrl;
-    this.breadcrumbs = navigateUrl.split(';')[0].split("/");
+   
 
 
     // console.log("getCurrentUrl "+this.currentUrl+" , "+this.breadcrumbs );
@@ -52,7 +48,6 @@ export class DropdownUrlComponent implements OnInit {
         currentUrl = router.url;
         if(this.parentBaseUrl==""){ 
           this.currentUrl = currentUrl;
-          this.breadcrumbs = currentUrl.split(';')[0].split("/");
         }
     });
   }
@@ -61,13 +56,6 @@ export class DropdownUrlComponent implements OnInit {
   onChangeGotoNavigate(val){
     this.router.navigate([val]);
   }
-  getBreadcrumbsUrl(loop:number){
-    loop++;
-    let txt:string = "";  
-    for(let i=1;i<=loop;i++){
-        txt += "/"+this.breadcrumbs[i];
-    }
-    return txt;  
-  }
+ 
 
 }
