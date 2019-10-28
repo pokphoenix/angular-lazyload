@@ -4,6 +4,9 @@ import { forbiddenNameValidator, fnForbiddenNameValidator } from '../../share/us
 import { PasswordValidator } from '../../share/password.validator';
 import { RegistrationService } from '../../services/registration.service';
 import { MustMatch } from '../../share/main.validator';
+import { map } from 'rxjs/operators';
+
+declare var $: any;
 
 
 @Component({
@@ -25,6 +28,9 @@ export class FormReactiveComponent implements OnInit {
   //   })
   // });
   registrationForm:FormGroup;
+
+  showModal:boolean;
+
   
   get userName(){
     return this.registrationForm.get('userName');
@@ -47,6 +53,9 @@ export class FormReactiveComponent implements OnInit {
 
   constructor(private fb:FormBuilder,private _registrationService:RegistrationService ) { }
 
+
+  value:any ;
+
   ngOnInit() {
     
     this.prepareForm();
@@ -62,6 +71,18 @@ export class FormReactiveComponent implements OnInit {
           email.clearValidators();
         }
         email.updateValueAndValidity();
+    });
+
+    //upper case value with pipe map 
+    this.value =  this.userName.valueChanges.pipe(
+      map((value) => value.toUpperCase()),
+    );
+
+    this.userName.valueChanges.subscribe((value) => {
+        console.log('Hey, I changed! My value is:', value);
+    });
+    this.userName.statusChanges.subscribe((status) => {
+        console.log('Hey, I changed! My status is:', status);
     });
 
   }
@@ -178,9 +199,9 @@ export class FormReactiveComponent implements OnInit {
       this.alternateEmails.push(this.fb.control('mail'+i));
     }
 
+    $("#exampleModal").modal("toggle");
 
   }
-
 
   loadApiDataPatch(){
     this.registrationForm.patchValue({ // much setting some value in form 
