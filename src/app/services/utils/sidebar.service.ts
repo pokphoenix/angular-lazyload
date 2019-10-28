@@ -119,6 +119,20 @@ export class SidebarUtilsService {
         {
           'url': '/special/drag-and-drop-table',
           'text': 'Drag And Drop'
+        },
+        {
+          'url': '/special/google-map',
+          'text': 'Google Map' ,
+          sub:[
+            {
+              'url': '/special/google-map/list',
+              'text': 'Google Map List' ,
+            },
+            {
+              'url': '/special/google-map/basic',
+              'text': 'Google Map Basic' ,
+            }
+          ]
         }
       ]
     }
