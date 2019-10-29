@@ -2,12 +2,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+
+var formidable = require('formidable');
+var fs = require('fs');
+
+//var upload = multer({ dest: 'uploads/' })   //  upload to folder uploads
+
 const PORT = 3000;
 const app = express();
 
 app.use(bodyParser.json());
 
 app.use(cors());
+
 
 app.get('/',function(req,res){
     res.send('Hello from server');
@@ -20,6 +27,71 @@ app.post('/enroll',function(req,res){
     });
 })
 
+//app.post('/upload',bodyParser.raw({ limit : '1mb', type : '*/*'}),function(req,res){
+app.post('/upload',function(req,res){
+    var form = new formidable.IncomingForm();
+    // document https://github.com/node-formidable/node-formidable
+    // specify that we want to allow the user to upload multiple files in a single request
+    form.multiples = true;
+    // form.maxFieldsSize = 20 * 1024 * 1024;
+    form.maxFileSize = 5 * 1024 * 1024;
+    // form.maxFields = 1000;
+    var dir = getFolder();
+    var resData = {
+        status : 'success',
+        filelists:fileList,
+        message : ""
+    }
+
+    var fileList = [];
+    // store all uploads in the /uploads directory
+    form.uploadDir = dir;
+    // parse the incoming request containing the form data
+    form.parse(req);
+    // every time a file has been uploaded successfully,
+    // rename it to it's orignal name
+    form.on('file', function(field, file) {
+        var newpath = form.uploadDir+"/" +Date.now()+"-"+file.name;
+        fileList.push({ 'name': newpath.replace(__dirname,"")});
+        fs.rename(file.path, newpath ,function(err){
+            if (err) {
+                throw err;
+            }
+        });
+    });
+    //log any errors that occur
+    form.on('error', function(err) {
+        resData.status = 'error' ;
+        resData.message = err;
+        res.send(resData);
+    });
+    // once all the files have been uploaded, send a response to the client
+    form.on('end', function() {
+        resData.fileList = fileList;
+        res.send(resData);
+    });
+})
+
 app.listen(PORT,function(){
     console.log("Server running on localhost:"+PORT)
 })
+
+function getFolder(){
+    
+    var d = new Date(),
+    month = '' + (d.getMonth() + 1),
+    // day = '' + d.getDate(),
+    year = d.getFullYear();
+
+    
+    dir = __dirname+"/upload/"+year+"/"+month ;
+    try {
+        if (!fs.existsSync(dir)){
+            fs.mkdirSync(dir,{ recursive: true })
+            console.log("create new dir"+dir);
+        }
+    } catch (err) {
+        console.error(err)
+    }
+    return dir ;
+}
