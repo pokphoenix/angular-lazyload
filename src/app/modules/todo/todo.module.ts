@@ -9,16 +9,25 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './service/api.service';
 import { TodoViewComponent } from './components/view/view.component';
+import { UtilsModule } from '../utils/utils.module';
+import { FormService } from './service/form.service';
+import { ValidationService } from 'src/app/services/validate/validation.service';
 
 
 @NgModule({
-  declarations: [TodoListComponent, TodoAddComponent, TodoEditComponent, TodoViewComponent],
+  declarations: [
+    TodoListComponent
+    , TodoAddComponent
+    , TodoEditComponent
+    , TodoViewComponent
+  ],
   imports: [
     CommonModule,
     TodoRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    UtilsModule
   ],
-  providers:[ApiService]
+  providers:[ApiService,FormService,ValidationService ]
 })
 export class TodoModule { }

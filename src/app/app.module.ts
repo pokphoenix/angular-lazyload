@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { SidebarUtilsService } from './services/utils/sidebar.service';
 import { PageNotfoundComponent } from './components/page-notfound/page-notfound.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

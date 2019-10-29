@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../../service/api.service';
+import { FormService } from '../../service/form.service';
 
 @Component({
-  selector: 'app-edit',
+  selector: 'app-edit', 
   templateUrl: '../add/add.component.html',   // use the same page with add component
   styleUrls: ['../add/add.component.css']
 })
@@ -15,29 +16,29 @@ export class TodoEditComponent implements OnInit {
   id:number= null;
  
   constructor(
-    private formBuilder: FormBuilder, 
     private activeAouter: ActivatedRoute, 
     private router: Router, 
-    private api: ApiService
+    private api: ApiService,
+    private formService:FormService
   ) { }
  
   ngOnInit() {
      
     this.getDetail(this.activeAouter.snapshot.params['id']);
  
-    this.todoForm = this.formBuilder.group({
-      title: ['', Validators.compose([Validators.required])],
-    });
+    this.todoForm = this.formService.getTodoForm();
   }
  
   getDetail(id) {
     this.api.getTodo(id)
       .subscribe(data => {
         this.id = data.id;
-        this.todoForm.setValue({
-          title: data.title
-        });
-        console.log(data);
+        let form = {};
+        for (const key in data) {
+          if(key!="id")
+            form[key] = data[key];
+        }
+        this.todoForm.setValue(form);
       });
   }
   saveTodo() {

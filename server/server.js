@@ -82,7 +82,8 @@ app.get('/todo',function(req,res){
 
 app.post('/todo',function(req,res){
     data = req.body ;
-    var todo = { 'id' : todos.length+1 , 'title':data.title};
+    var todo = data;
+    todo.id = todos.length+1 ;
     todos.push(todo);
     res.status(200).send(todo);
 })
@@ -98,14 +99,32 @@ app.get('/todo/:id',function(req,res){
     res.status(200).send(todo);
 })
 
-app.patch('/todo/:id',function(req,res){
+// update all data
+app.put('/todo/:id',function(req,res){
     var id = req.params.id;
     var data = req.body;
-    console.log("update : "+id)
+    console.log("todo-put : "+id);
     var todo = {} ;
     for(let i = 0 ; i<todos.length;i++){
         if(todos[i].id == id ){
-            todos[i].title = data.title;
+            todos[i] = data;
+            todo = todos[i];
+        }
+    }
+    res.status(200).send(todo);
+})
+
+// update some data
+app.patch('/todo/:id',function(req,res){
+    var id = req.params.id;
+    var data = req.body;
+    console.log("todo-patch : "+id);
+    var todo = {} ;
+    for(let i = 0 ; i<todos.length;i++){
+        if(todos[i].id == id ){
+            for (const key in data) {
+                todos[i][key] = data[key];
+            }
             todo = todos[i];
         }
     }
@@ -114,6 +133,7 @@ app.patch('/todo/:id',function(req,res){
 
 app.delete('/todo/:id',function(req,res){
     var id = req.params.id;
+    console.log("todo-delete : "+id);
     var todo = {};
     for(let i = 0 ; i<todos.length;i++){
         if(todos[i].id == id ){

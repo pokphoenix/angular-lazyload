@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../service/api.service';
+import { FormService } from '../../service/form.service';
 
 @Component({
   selector: 'app-todo-add',
@@ -12,21 +13,18 @@ export class TodoAddComponent implements OnInit {
 
   todoForm: FormGroup;
   actionName = "add";
-  constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService) { }
- 
+  constructor(
+    private formBuilder: FormBuilder
+    , private router: Router
+    , private api: ApiService 
+    , private formService:FormService 
+    ) { }
  
   ngOnInit() {
-    
-    this.todoForm = this.formBuilder.group({
-      title: ['', Validators.compose([Validators.required])],
-    });
-
-    // if(this.actionName==null){
-    //   this.actionName = "add";
-    //   this.todoForm = this.formBuilder.group({
-    //     title: ['', Validators.compose([Validators.required])],
-    //   });
-    // }
+    this.todoForm = this.formService.getTodoForm();
+    // this.todoForm.get('title').valueChanges.subscribe(val => {
+    //     console.log(`My name is ${val}.`);
+    // });
   }
  
   saveTodo() {
@@ -43,5 +41,4 @@ export class TodoAddComponent implements OnInit {
           console.log(err);
         });
   }
-
 }
