@@ -6,6 +6,7 @@ import { FormHeaderComponent } from './components/form-header/form-header.compon
 import { FormTdfComponent } from './components/form-tdf/form-tdf.component';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
 import { FormBindingDataComponent } from './components/binding-data/binding-data.component';
+import { FormUploadfileComponent } from './components/form-uploadfile/form-uploadfile.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'tdf',component:FormTdfComponent},
   {path:'reactive',component:FormReactiveComponent},
   {path:'binding-data',component:FormBindingDataComponent},
+  {path:'upload',component:FormUploadfileComponent},
   //{ path: 'hero/:id', component: HeroDetailComponent }
 
 ];

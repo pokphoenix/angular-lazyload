@@ -14,6 +14,7 @@ import { EnrollmentService } from './services/enrollment.service';
 import { FormReactiveComponent } from './components/form-reactive/form-reactive.component';
 import { RegistrationService } from './services/registration.service';
 import { FormBindingDataComponent } from './components/binding-data/binding-data.component';
+import { FormUploadfileComponent } from './components/form-uploadfile/form-uploadfile.component';
 
 @NgModule({
   declarations: [FormNormalComponent
@@ -21,7 +22,8 @@ import { FormBindingDataComponent } from './components/binding-data/binding-data
     , FormHeaderComponent
     , FormTdfComponent
     , FormReactiveComponent
-    , FormBindingDataComponent],
+    , FormBindingDataComponent
+    , FormUploadfileComponent],
   imports: [
     CommonModule,
     FormsRoutingModule,

@@ -75,6 +75,10 @@ export class SidebarUtilsService {
         {
           'url': '/form/binding-data',
           'text': 'Binding data'
+        },
+        {
+          'url': '/form/upload',
+          'text': 'Upload'
         }
       ]
     },
