@@ -10,7 +10,7 @@ import { ApiService } from '../../service/api.service';
 })
 export class TodoAddComponent implements OnInit {
 
-  @Input()todoForm: FormGroup;
+  todoForm: FormGroup;
   actionName = "add";
   constructor(private formBuilder: FormBuilder, private router: Router, private api: ApiService) { }
  
@@ -30,11 +30,12 @@ export class TodoAddComponent implements OnInit {
   }
  
   saveTodo() {
-    const payload = {
-      title: this.todoForm.controls.title.value,
-    };
- 
-    this.api.addTodo(payload)
+    // const payload = {
+    //   title: this.todoForm.controls.title.value,
+    // };
+    let form = this.todoForm.value;
+
+    this.api.addTodo(form)
       .subscribe(res => {
           let id = res['_id'];
           this.router.navigate(['/todo']);
