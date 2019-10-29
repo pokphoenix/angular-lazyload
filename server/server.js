@@ -72,6 +72,60 @@ app.post('/upload',function(req,res){
     });
 })
 
+
+
+var todos = [];
+
+app.get('/todo',function(req,res){
+    res.send(todos);
+})
+
+app.post('/todo',function(req,res){
+    data = req.body ;
+    var todo = { 'id' : todos.length+1 , 'title':data.title};
+    todos.push(todo);
+    res.status(200).send(todo);
+})
+
+app.get('/todo/:id',function(req,res){
+    var todo = {} ;
+    var id = req.params.id;
+    for(let i = 0 ; i<todos.length;i++){
+        if(todos[i].id == id ){
+           todo = todos[i];
+        }
+    }
+    res.status(200).send(todo);
+})
+
+app.patch('/todo/:id',function(req,res){
+    var id = req.params.id;
+    var data = req.body;
+    console.log("update : "+id)
+    var todo = {} ;
+    for(let i = 0 ; i<todos.length;i++){
+        if(todos[i].id == id ){
+            todos[i].title = data.title;
+            todo = todos[i];
+        }
+    }
+    res.status(200).send(todo);
+})
+
+app.delete('/todo/:id',function(req,res){
+    var id = req.params.id;
+    var todo = {};
+    for(let i = 0 ; i<todos.length;i++){
+        if(todos[i].id == id ){
+            todo = todos[i] ;
+            todos.splice(i,1);
+        }
+    }
+    res.status(200).send(todo);
+})
+
+
+
 app.listen(PORT,function(){
     console.log("Server running on localhost:"+PORT)
 })

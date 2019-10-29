@@ -18,6 +18,7 @@ const routes: Routes = [
     m=> m.RoutesModule
   )},
   {path:'special', loadChildren: 'src/app/modules/special/special.module#SpecialModule'},
+  {path:'todo', loadChildren: 'src/app/modules/todo/todo.module#TodoModule'},
   {path:"**",component:PageNotfoundComponent } // important this much lowest order  
 ];
 

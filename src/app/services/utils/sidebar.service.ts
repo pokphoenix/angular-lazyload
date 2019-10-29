@@ -139,7 +139,8 @@ export class SidebarUtilsService {
           ]
         }
       ]
-    }
+    },
+    {text:"todo",url:"/todo"},
   ]
 
   constructor() { }
