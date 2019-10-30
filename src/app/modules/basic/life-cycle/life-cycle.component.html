@@ -1,6 +1,6 @@
 <p>life-cycle works!</p>
-<input type="text" [disabled]="disabledInput">
-<button type="button" (click)="doTest()" >toggle input</button>
+<input type="text" [disabled]="disabledInput" (change)="doTestChange()" >
+<button type="button" (click)="doTestClick()" >toggle input</button>
 
 <h5>See in console</h5>
-
+ doCheck {{ this.countDoCheck }} times

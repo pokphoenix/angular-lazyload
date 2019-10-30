@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../service/api.service';
@@ -25,6 +25,17 @@ export class TodoAddComponent implements OnInit {
     // this.todoForm.get('title').valueChanges.subscribe(val => {
     //     console.log(`My name is ${val}.`);
     // });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("call  ngOnChanges")
+    
+    // for (let propName in changes) {
+    //   let chng = changes[propName];
+    //   let cur  = JSON.stringify(chng.currentValue);
+    //   let prev = JSON.stringify(chng.previousValue);
+    //   console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+    // }
   }
  
   saveTodo() {

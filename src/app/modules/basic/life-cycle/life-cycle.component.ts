@@ -8,14 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class BasicLifeCycleComponent implements OnInit {
 
   totalCount:number = 0;
-  countCheck:number = 0;
+  countDoCheck:number = 0;
   afterContentChecked:number = 0;
   afterViewChecked:number = 0;
   disabledInput:boolean = false;
-
+  
   constructor() { }
 
-  ngOnChanges(){
+ 
+  ngOnChanges() {
     console.log("call  ngOnChanges")
     this.totalCount++;
   }
@@ -28,8 +29,8 @@ export class BasicLifeCycleComponent implements OnInit {
   //Called during every change detection run, immediately after ngOnChanges() and ngOnInit().
   ngDoCheck(){
     this.totalCount++;
-    this.countCheck++;
-    console.log("call  ngDoCheck totalCount : "+this.totalCount ,"countCheck : "+this.countCheck);
+    this.countDoCheck++;
+    console.log("call  ngDoCheck totalCount : "+this.totalCount ,"countDoCheck : "+this.countDoCheck);
   }
 
   //Called once after the first ngDoCheck().
@@ -64,8 +65,14 @@ export class BasicLifeCycleComponent implements OnInit {
     this.totalCount++;
   }
 
-  doTest(){
+  doTestClick(){
     this.disabledInput = !this.disabledInput;
   }
+
+  doTestChange(){
+    
+  }
+
+  
 
 }

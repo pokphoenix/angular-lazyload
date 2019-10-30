@@ -9,8 +9,10 @@ export class FormService {
   constructor(private formBuilder: FormBuilder) { }
 
   getTodoForm(){
+    // updateOn  Possible values: 'change' | 'blur' | 'submit' Default value: 'change'
+    
     return  this.formBuilder.group({
-      title: ['', Validators.compose([Validators.required])],
+      title: ['', {updateOn : 'blur' , validators : [Validators.required]  }  ],
       firstname:[''
         ,[Validators.required, Validators.minLength(3)]
       ],

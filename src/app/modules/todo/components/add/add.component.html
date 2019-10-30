@@ -1,26 +1,29 @@
 <div class="row mt-5">
-        <div class="col-md-6 mx-auto">
+        <div class="col-md-12 mx-auto">
             <h2 class="text-center">{{ actionName | titlecase }} Todo</h2>
             <div class="card mt-3">
                 <div class="card-body">
                   <form [formGroup]="todoForm" (ngSubmit)="saveTodo()">
                     <div class="form-group">
-                        <label class="col-md-4">Title </label>
+                        <label class="col-md-6">Title (use updateOn 'blur') </label>
                         <input type="text" class="form-control" formControlName="title" 
+                        name="title" id="title"
                         [class.is-invalid]=" todoForm.controls.title.invalid 
                         &&  todoForm.controls.title.touched"
                         />
+                        onblur value : {{ todoForm.get('title').value | uppercase }}
                         <app-error-message [control]="todoForm.controls.title" 
                             *ngIf="todoForm.controls.title.invalid 
                                 && todoForm.controls.title.touched"
                         ></app-error-message>
                     </div>
                     <div class="form-group">
-                        <label class="col-md-4">First Name </label>
+                        <label class="col-md-6">First Name (use default updateOn change )</label>
                         <input type="text" class="form-control" formControlName="firstname" 
                         [class.is-invalid]="todoForm.controls.firstname.invalid 
                             &&  todoForm.controls.firstname.touched"
                         />
+                        onchange value : {{ todoForm.get('firstname').value | uppercase }}
                         <app-error-message [control]="todoForm.controls.firstname" 
                                 *ngIf="todoForm.controls.firstname.invalid 
                                     && todoForm.controls.firstname.touched"
