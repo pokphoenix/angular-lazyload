@@ -15,6 +15,7 @@ import { BasicNgForEx2Component } from './ng-for/components/ex2/ex2.component';
 import { BasicNgForEx3Component } from './ng-for/components/ex3/ex3.component';
 import { BasicNgForEx4Component } from './ng-for/components/ex4/ex4.component';
 import { BasicNgForEx5Component } from './ng-for/components/ex5/ex5.component';
+import { BasicLifeCycleComponent } from './life-cycle/life-cycle.component';
 
 @NgModule({
   declarations: [NgSwitchComponent, BasicIndexComponent, HeaderComponent, BasicDataSharingParentChildComponent, BasicDataSharingChildParentComponent, BasicDataSharingIndexComponent
@@ -24,6 +25,7 @@ import { BasicNgForEx5Component } from './ng-for/components/ex5/ex5.component';
     , BasicNgForEx3Component
     , BasicNgForEx4Component
     , BasicNgForEx5Component
+    , BasicLifeCycleComponent
   ],
   imports: [
     CommonModule,

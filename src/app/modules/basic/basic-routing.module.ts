@@ -5,6 +5,7 @@ import { BasicIndexComponent } from './index/index.component';
 import { BasicNgForExComponent } from './ng-for/components/ex/ex.component';
 import { BasicDataSharingParentChildComponent } from './data-sharing/components/parent-child/parent-child.component';
 import { BasicDataSharingChildParentComponent } from './data-sharing/components/child-parent/child-parent.component';
+import { BasicLifeCycleComponent } from './life-cycle/life-cycle.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'data-sharing',redirectTo:'data-sharing/parent-child',pathMatch:'full'},
   {path:'data-sharing/parent-child',component:BasicDataSharingParentChildComponent},
   {path:'data-sharing/child-parent',component:BasicDataSharingChildParentComponent},
+  {path:'life-cycle',component:BasicLifeCycleComponent},
 
 ];
 

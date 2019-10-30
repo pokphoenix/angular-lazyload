@@ -18,28 +18,31 @@ export class SidebarUtilsService {
         },
         {
           'url': '/basic/ng-for/ex',
-          'text': 'NgFor'
+          'text': 'NgFor',
+          'sub':[
+            {
+              'url': '/basic/ng-for/ex/1',
+              'text': 'NgFor Ex.1 learning ngFor'
+            },
+            {
+              'url': '/basic/ng-for/ex/2',
+              'text': 'NgFor Ex.2 create ngFor by constructor'
+            },
+            {
+              'url': '/basic/ng-for/ex/3',
+              'text': 'NgFor Ex.3 create ngFor By function '
+            },
+            {
+              'url': '/basic/ng-for/ex/4',
+              'text': 'NgFor Ex.4 Use method from super class'
+            },
+            {
+              'url': '/basic/ng-for/ex/5',
+              'text': 'NgFor Ex.5 create ngFor by declare Array'
+            },
+          ]
         },
-        {
-          'url': '/basic/ng-for/ex/1',
-          'text': 'NgFor Ex.1 learning ngFor'
-        },
-        {
-          'url': '/basic/ng-for/ex/2',
-          'text': 'NgFor Ex.2 create ngFor by constructor'
-        },
-        {
-          'url': '/basic/ng-for/ex/3',
-          'text': 'NgFor Ex.3 create ngFor By function '
-        },
-        {
-          'url': '/basic/ng-for/ex/4',
-          'text': 'NgFor Ex.4 Use method from super class'
-        },
-        {
-          'url': '/basic/ng-for/ex/5',
-          'text': 'NgFor Ex.5 create ngFor by declare Array'
-        },
+        
         {
           'url': '/basic/data-sharing/parent-child',
           'text': 'Data Sharing Parent to Child'
@@ -47,6 +50,10 @@ export class SidebarUtilsService {
         {
           'url': '/basic/data-sharing/child-parent',
           'text': 'Data Sharing Child to Parent'
+        },
+        {
+          'url': '/basic/life-cycle',
+          'text': 'Life Cycle'
         }
        
       ] 
