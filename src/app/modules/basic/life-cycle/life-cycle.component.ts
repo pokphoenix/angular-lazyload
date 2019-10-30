@@ -70,9 +70,9 @@ export class BasicLifeCycleComponent implements OnInit {
   }
 
   doTestChange(){
+    var e = document.createElement('p');
+    e.innerHTML = "doTestChange";
+    document.getElementById("console").appendChild(e);
     
   }
-
-  
-
 }
