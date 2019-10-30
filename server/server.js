@@ -108,6 +108,7 @@ app.put('/todo/:id',function(req,res){
     for(let i = 0 ; i<todos.length;i++){
         if(todos[i].id == id ){
             todos[i] = data;
+            todos[i].id= id ;
             todo = todos[i];
         }
     }
