@@ -11,6 +11,9 @@ export class BasicIndexComponent implements OnInit {
   
   person: UserModel = new UserModel();
 
+  numberA: number = 10;    
+  numberB: number = 20;    
+
   date = new Date();
 
   constructor() { }

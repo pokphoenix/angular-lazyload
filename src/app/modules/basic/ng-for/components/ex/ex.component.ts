@@ -25,12 +25,17 @@ export class BasicNgForExComponent implements OnInit {
     let datas = _sidebarUtilsService.getSidebarUrlByModule("basic");
     let i = 1;
     for (const data of datas) {
-      if(data.url.indexOf("/ng-for/ex/")!=-1){
-        this.ngForExs.push({
-            id: i , 
-            name: data.text
-        });
-        i++;
+      if(data.url.indexOf("/basic/ng-for/ex")!=-1){
+          
+        for(const d of data.sub){
+          this.ngForExs.push({
+              id: i , 
+              name: d.text
+          });
+          i++;
+        }
+
+        
       }
     }
     this.maxExId = i-1;

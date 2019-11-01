@@ -25,8 +25,20 @@ export class FormUploadfileComponent implements OnInit {
     // this.fileData = <File>files.target.files[0];
     if (event.target.files.length > 0) {
       for (const key in event.target.files) {
-        // console.log("key "+key+" , "+event.target.files[key].fileName);
-        this.fileData.push(<File>event.target.files[key]);
+      
+        var size = event.target.files[key].size;  
+        if(size > (1024*1024*1))  
+        {  
+            alert(event.target.files[key].name+" size must not exceeds 1 MB"); 
+        }  
+        else  
+        {  
+          this.fileData.push(<File>event.target.files[key]);
+        }  
+
+
+
+
       }
        
     }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Todo } from '../model/Todo';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -10,6 +10,25 @@ import { catchError, tap } from 'rxjs/operators';
 export class ApiService {
   apiUrl:string = "http://localhost:3000/todo" ;
   constructor(private _http: HttpClient) { }
+
+  // server employ in project node-mysql-crud
+  getEmployee (): Observable<Todo[]> {
+
+    //token get from authen user 
+    localStorage.setItem('token','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzI1ODA0OTcsImV4cCI6MTU3MjU4NDA5N30.84k4yh0uljtcQgC4j3w7gpr3ePwxOBEah4nUPpYGI2g'); 
+    // get token from localStorage.  
+    let token = localStorage.getItem('token');  
+    // Append Authorization header.  
+    let headers = new HttpHeaders();
+    headers = headers.set('x-access-token',token );
+    return this._http.get<Todo[]>("http://localhost:3000/employees",{ headers : headers })
+      .pipe(
+        tap(heroes => console.log('fetched todos')),
+        catchError(this.handleError('getTodos', []))
+      );
+  }
+
+
   getTodos (): Observable<Todo[]> {
     return this._http.get<Todo[]>(this.apiUrl)
       .pipe(
