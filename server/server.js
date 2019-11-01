@@ -7,10 +7,23 @@ var formidable = require('formidable');
 var fs = require('fs');
 var rp = require('request-promise');
 
+var nodemailer = require('nodemailer');
+
 //var upload = multer({ dest: 'uploads/' })   //  upload to folder uploads
 
 const PORT = 3000;
 const app = express();
+
+
+// goto  https://myaccount.google.com/lesssecureapps   for open less secure
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: '',
+        pass: ''
+    }
+  });
+
 
 app.use(bodyParser.json());
 
@@ -19,6 +32,27 @@ app.use(cors());
 
 app.get('/',function(req,res){
     res.send('Hello from server');
+})
+
+app.get('/email',function(req,res){
+
+      var mailOptions = {
+        from: 'komsan.kr.18@gmail.com',
+        to: 'pokphoenix@gmail.com',
+        subject: 'Sending Email via Node.js',
+        text: 'That was easy!'
+      };
+       
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          res.send('Email sent: ' + info.response);
+        }
+      });
+
+
+   
 })
 
 app.post('/enroll',function(req,res){
