@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DragAndDropTableComponent } from './components/drag-and-drop-table/drag-and-drop-table.component';
 import { GoogleMapListComponent } from './components/google-map/list/list.component';
 import { GoogleBasicComponent } from './components/google-map/basic/basic.component';
+import { RecaptchaComponent } from './components/recaptcha/recaptcha.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,7 @@ const routes: Routes = [
       {path:'basic',component:GoogleBasicComponent}
     ]
   },
+  {path:'recaptcha',component:RecaptchaComponent},
 ];
 
 @NgModule({

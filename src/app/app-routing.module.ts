@@ -19,6 +19,9 @@ const routes: Routes = [
   )},
   {path:'special', loadChildren: 'src/app/modules/special/special.module#SpecialModule'},
   {path:'todo', loadChildren: 'src/app/modules/todo/todo.module#TodoModule'},
+  {path:'login', loadChildren:()=> import('src/app/modules/login/login.module').then(
+    m=> m.LoginModule
+  )},
   {path:"**",component:PageNotfoundComponent } // important this much lowest order  
 ];
 

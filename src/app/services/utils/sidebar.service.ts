@@ -132,6 +132,10 @@ export class SidebarUtilsService {
           'text': 'Drag And Drop'
         },
         {
+          'url': '/special/recaptcha',
+          'text': 'Recaptcha'
+        },
+        {
           'url': '/special/google-map',
           'text': 'Google Map' ,
           sub:[
@@ -148,6 +152,18 @@ export class SidebarUtilsService {
       ]
     },
     {text:"todo",url:"/todo"},
+    {text:"login",url:"/login", 
+      sub:[
+        {  
+          'url': '/login/google',
+          'text': 'Login with Google' 
+        },
+        {  
+          'url': 'login/facebook',
+          'text': 'Login with Facebook' 
+        }
+      ]
+    },
   ]
 
   constructor() { }

@@ -5,6 +5,7 @@ const cors = require('cors');
 
 var formidable = require('formidable');
 var fs = require('fs');
+var rp = require('request-promise');
 
 //var upload = multer({ dest: 'uploads/' })   //  upload to folder uploads
 
@@ -26,6 +27,10 @@ app.post('/enroll',function(req,res){
         "message":"Data received"
     });
 })
+
+
+
+
 
 //app.post('/upload',bodyParser.raw({ limit : '1mb', type : '*/*'}),function(req,res){
 app.post('/upload',function(req,res){
@@ -72,6 +77,26 @@ app.post('/upload',function(req,res){
     });
 })
 
+
+app.post('/recaptcha',function(req,res){
+    //res.send('Hello from server');
+    console.log("recaptcha");
+    const options = {
+        method: 'POST',
+        uri: 'https://www.google.com/recaptcha/api/siteverify',
+        qs: {
+          secret : req.body.secret ,
+          response: req.body.response  
+        },
+        json: true
+      };
+      
+      rp(options)
+        .then(response => res.json(response))
+        .catch(() => {});
+
+    // res.send(post_req);
+})
 
 
 var todos = [];

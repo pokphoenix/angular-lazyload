@@ -52,6 +52,14 @@ export class ApiService {
       catchError(this.handleError<Todo>('addTodo'))
     );
   }
+
+  verifyCaptcha(data): Observable<any>{
+    return this._http.post<any>(`http://127.0.0.1:3000/recaptcha`, data).pipe(
+      tap((res: any) => console.log(res)),
+      catchError(this.handleError<any>('addTodo'))
+    );
+  }
+
    
   updateTodo (id, todo): Observable<any> {
     const url = `${this.apiUrl}/${id}`;

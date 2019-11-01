@@ -26,14 +26,16 @@ export class BasicNgForExComponent implements OnInit {
     let i = 1;
     for (const data of datas) {
       if(data.url.indexOf("/basic/ng-for/ex")!=-1){
-          
-        for(const d of data.sub){
-          this.ngForExs.push({
-              id: i , 
-              name: d.text
-          });
-          i++;
-        }
+          if(data.sub!=null){
+            for(const d of data.sub){
+              this.ngForExs.push({
+                  id: i , 
+                  name: d.text
+              });
+              i++;
+            }
+          }
+        
 
         
       }
