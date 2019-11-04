@@ -11,6 +11,13 @@ var nodemailer = require('nodemailer');
 
 //var upload = multer({ dest: 'uploads/' })   //  upload to folder uploads
 
+const nzu = require('./lib/nzu')
+console.log(nzu.blue("nnamdi")) // outpts blue `nnamdi`
+console.log(nzu.bold.yellow("chidume")) // outputs bold yellow `chidume`
+
+console.log("\x1b[91m nnamdi - pok \x1b[39m");
+
+
 const PORT = 3000;
 const app = express();
 
