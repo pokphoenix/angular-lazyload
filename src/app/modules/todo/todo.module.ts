@@ -14,6 +14,9 @@ import { FormService } from './service/form.service';
 import { ValidationService } from 'src/app/services/validate/validation.service';
 import { ExportService } from './service/export.service';
 import { ExportDirective } from 'src/app/directives/export.directive';
+import { Factorial } from 'src/app/pipes/factorial.pipe';
+
+
 
 
 @NgModule({
@@ -23,6 +26,7 @@ import { ExportDirective } from 'src/app/directives/export.directive';
     , TodoEditComponent
     , TodoViewComponent
     ,ExportDirective
+    ,Factorial
   ],
   imports: [
     CommonModule,
