@@ -13,6 +13,7 @@ import { UtilsModule } from '../utils/utils.module';
 import { FormService } from './service/form.service';
 import { ValidationService } from 'src/app/services/validate/validation.service';
 import { ExportService } from './service/export.service';
+import { ExportDirective } from 'src/app/directives/export.directive';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { ExportService } from './service/export.service';
     , TodoAddComponent
     , TodoEditComponent
     , TodoViewComponent
+    ,ExportDirective
   ],
   imports: [
     CommonModule,

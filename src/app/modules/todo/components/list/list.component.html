@@ -5,6 +5,11 @@
           </a>
 
           <button type="button" (click)="export()" class="btn btn-danger">Export</button>
+          
+          <button type="button" [appExport]="data" fileName="datas" class="btn btn-warning ml-2">
+            Export with Directive
+          </button>
+
         </h2>
         <table class="table table-bordered mt-5">
           <thead>
