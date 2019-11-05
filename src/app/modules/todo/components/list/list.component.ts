@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../model/Todo';
 import { ApiService } from '../../service/api.service';
+import { ExportService } from '../../service/export.service';
 
 @Component({
   selector: 'app-list',
@@ -9,7 +10,7 @@ import { ApiService } from '../../service/api.service';
 })
 export class TodoListComponent implements OnInit {
   data: Todo[] = [];
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService,private exportService: ExportService) { }
 
   ngOnInit() {
     this.api.getTodos()
@@ -28,5 +29,9 @@ export class TodoListComponent implements OnInit {
           console.log(err);
         }
       );
+  }
+
+  export(){
+    this.exportService.exportExcel(this.data, 'todos');
   }
 }

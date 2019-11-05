@@ -3,6 +3,8 @@
           <a class="float-right" [routerLink]="['/todo/add']">
             <button type="button" class="btn btn-primary">Add</button>
           </a>
+
+          <button type="button" (click)="export()" class="btn btn-danger">Export</button>
         </h2>
         <table class="table table-bordered mt-5">
           <thead>

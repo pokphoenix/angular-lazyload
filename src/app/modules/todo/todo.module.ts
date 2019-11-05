@@ -12,6 +12,7 @@ import { TodoViewComponent } from './components/view/view.component';
 import { UtilsModule } from '../utils/utils.module';
 import { FormService } from './service/form.service';
 import { ValidationService } from 'src/app/services/validate/validation.service';
+import { ExportService } from './service/export.service';
 
 
 @NgModule({
@@ -28,6 +29,6 @@ import { ValidationService } from 'src/app/services/validate/validation.service'
     HttpClientModule,
     UtilsModule
   ],
-  providers:[ApiService,FormService,ValidationService ]
+  providers:[ApiService,FormService,ValidationService,ExportService]
 })
 export class TodoModule { }

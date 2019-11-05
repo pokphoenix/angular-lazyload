@@ -140,7 +140,11 @@ app.post('/recaptcha',function(req,res){
 })
 
 
-var todos = [];
+var todos = [ {
+    id:1,
+    title:'Mr.',
+    firstname:'Pok Aha'
+} ];
 
 app.get('/todo',function(req,res){
     res.send(todos);
