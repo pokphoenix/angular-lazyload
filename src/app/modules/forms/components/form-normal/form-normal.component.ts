@@ -24,6 +24,7 @@ export class FormNormalComponent implements OnInit {
     const SEARCH_URL = 'https://api.github.com/search/repositories?q=';
 
     const repositoryNameChanges$ = fromEvent(repositoryTextInput, 'input').pipe(
+      // map(e=>(<HTMLInputElement>e.target).value)
       map(e=>e.target['value'])
     );
 
