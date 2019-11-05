@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { map, filter, distinctUntilChanged, debounceTime, switchMap } from 'rxjs/operators';
+import { fromEvent, Observable } from 'rxjs';
+import { map, filter, distinctUntilChanged, debounceTime, switchMap, tap, shareReplay } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -23,6 +23,8 @@ export class FormNormalComponent implements OnInit {
 
     const SEARCH_URL = 'https://api.github.com/search/repositories?q=';
 
+    const cache = new Map();
+
     const repositoryNameChanges$ = fromEvent(repositoryTextInput, 'input').pipe(
       // map(e=>(<HTMLInputElement>e.target).value)
       map(e=>e.target['value'])
@@ -34,13 +36,25 @@ export class FormNormalComponent implements OnInit {
       filter(Boolean),
       distinctUntilChanged(),
       debounceTime(1000),
-      switchMap((name) => this.formFetch(SEARCH_URL + name)),
+      switchMap((name:string) => {
+
+        console.log(cache);
+
+        if (cache.get(name)) {
+          return cache.get(name);
+        }
+        const request$ = this.formFetch(SEARCH_URL + name).pipe(
+          tap((result) => cache.set(name, request$)),
+          shareReplay(1)
+        );
+        return request$;
+      }),
       // switchMap((response) => response.json())
     );
 
-    repositories$.subscribe((repos) => {
-      //  console.log(repos);
-    const elements = repos ? repos.items.reduce((acc, repo) => {
+    repositories$.subscribe((repos:Observable<Repository>) => {
+      console.log(repos);
+      const elements = repos ? repos['items'].reduce((acc, repo) => {
         return acc + `<div>${repo.name}</div>`;
       }, '') : '';
 
@@ -48,9 +62,9 @@ export class FormNormalComponent implements OnInit {
     });
   }
 
-  formFetch(url){
+  formFetch(url):Observable<Repository>{
     console.log(url)
-    return this._http.get<any>(url);
+    return this._http.get<Repository>(url);
   }
 
   onSubmit(formData){
@@ -65,4 +79,17 @@ class UserModel{
   lastName :String;
   email :String;
   password:String;
+}
+
+interface Repository{
+  total_count:number ;
+  incomplete_results:boolean;
+  items:itemsData[];
+}
+
+interface itemsData{
+  id:number;
+  node_id:String;
+  name:String;
+  full_name:String
 }
