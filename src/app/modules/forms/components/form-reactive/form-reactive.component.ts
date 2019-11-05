@@ -4,7 +4,7 @@ import { forbiddenNameValidator, fnForbiddenNameValidator } from '../../share/us
 import { PasswordValidator } from '../../share/password.validator';
 import { RegistrationService } from '../../services/registration.service';
 import { MustMatch } from '../../share/main.validator';
-import { map } from 'rxjs/operators';
+import { map, distinctUntilChanged, debounceTime } from 'rxjs/operators';
 
 declare var $: any;
 
@@ -78,7 +78,12 @@ export class FormReactiveComponent implements OnInit {
       map((value) => value.toUpperCase()),
     );
 
-    this.userName.valueChanges.subscribe((value) => {
+    this.userName.valueChanges.pipe(
+      distinctUntilChanged(),
+      debounceTime(500) // for doing every 500ms 
+      //,  debouncing every 250 to 500 ms is the sweet spot
+      // to ensure smooth user experience.
+  ).subscribe((value) => {
         console.log('Hey, I changed! My value is:', value);
     });
     this.userName.statusChanges.subscribe((status) => {
